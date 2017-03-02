@@ -15,6 +15,14 @@
 		734267FE1E66D001005E2B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734267FD1E66D001005E2B06 /* Assets.xcassets */; };
 		734268011E66D001005E2B06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 734267FF1E66D001005E2B06 /* LaunchScreen.storyboard */; };
 		7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7342680B1E66D001005E2B06 /* WeatherTests.m */; };
+		7345DADB1E66EAE60042B51D /* MainWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7345DADA1E66EAE60042B51D /* MainWeatherView.xib */; };
+		7345DADC1E66EAE60042B51D /* MainWeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7345DADA1E66EAE60042B51D /* MainWeatherView.xib */; };
+		7345DADE1E66FD7F0042B51D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7345DADD1E66FD7F0042B51D /* CoreGraphics.framework */; };
+		7345DAE01E66FD8C0042B51D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7345DADF1E66FD8C0042B51D /* CoreData.framework */; };
+		7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345DAE21E66FEAC0042B51D /* LineChart.m */; };
+		7345DAE41E66FEAC0042B51D /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345DAE21E66FEAC0042B51D /* LineChart.m */; };
+		7345DB191E6831880042B51D /* MainWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345DB181E6831880042B51D /* MainWeatherView.m */; };
+		7345DB1A1E6831880042B51D /* MainWeatherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7345DB181E6831880042B51D /* MainWeatherView.m */; };
 		73C96980B993FF6085F86DFC /* libPods-WeatherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE641A7C3E2D2B480724A6B6 /* libPods-WeatherTests.a */; };
 		9B14FE754D9A658BABB178F0 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F193AA5FC7F39513FCB375CE /* libPods-Weather.a */; };
 /* End PBXBuildFile section */
@@ -44,6 +52,13 @@
 		734268071E66D001005E2B06 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7342680B1E66D001005E2B06 /* WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTests.m; sourceTree = "<group>"; };
 		7342680D1E66D001005E2B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7345DADA1E66EAE60042B51D /* MainWeatherView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWeatherView.xib; sourceTree = "<group>"; };
+		7345DADD1E66FD7F0042B51D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7345DADF1E66FD8C0042B51D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7345DAE11E66FEAC0042B51D /* LineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChart.h; sourceTree = "<group>"; };
+		7345DAE21E66FEAC0042B51D /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
+		7345DB171E6831880042B51D /* MainWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWeatherView.h; sourceTree = "<group>"; };
+		7345DB181E6831880042B51D /* MainWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWeatherView.m; sourceTree = "<group>"; };
 		99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		B4817F700115E0C0CFC52296 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -57,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7345DAE01E66FD8C0042B51D /* CoreData.framework in Frameworks */,
+				7345DADE1E66FD7F0042B51D /* CoreGraphics.framework in Frameworks */,
 				9B14FE754D9A658BABB178F0 /* libPods-Weather.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +92,8 @@
 		47D6C732D04F5465AE148ACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7345DADF1E66FD8C0042B51D /* CoreData.framework */,
+				7345DADD1E66FD7F0042B51D /* CoreGraphics.framework */,
 				F193AA5FC7F39513FCB375CE /* libPods-Weather.a */,
 				CE641A7C3E2D2B480724A6B6 /* libPods-WeatherTests.a */,
 			);
@@ -108,7 +127,12 @@
 				734267F21E66D001005E2B06 /* AppDelegate.m */,
 				734267F41E66D001005E2B06 /* ViewController.h */,
 				734267F51E66D001005E2B06 /* ViewController.m */,
+				7345DAE11E66FEAC0042B51D /* LineChart.h */,
+				7345DAE21E66FEAC0042B51D /* LineChart.m */,
 				734267F71E66D001005E2B06 /* Main.storyboard */,
+				7345DB171E6831880042B51D /* MainWeatherView.h */,
+				7345DB181E6831880042B51D /* MainWeatherView.m */,
+				7345DADA1E66EAE60042B51D /* MainWeatherView.xib */,
 				734267FD1E66D001005E2B06 /* Assets.xcassets */,
 				734267FF1E66D001005E2B06 /* LaunchScreen.storyboard */,
 				734268021E66D001005E2B06 /* Info.plist */,
@@ -234,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7345DADB1E66EAE60042B51D /* MainWeatherView.xib in Resources */,
 				734268011E66D001005E2B06 /* LaunchScreen.storyboard in Resources */,
 				734267FE1E66D001005E2B06 /* Assets.xcassets in Resources */,
 				734267F91E66D001005E2B06 /* Main.storyboard in Resources */,
@@ -244,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7345DADC1E66EAE60042B51D /* MainWeatherView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +375,9 @@
 			files = (
 				734267FC1E66D001005E2B06 /* Weather.xcdatamodeld in Sources */,
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
+				7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */,
 				734267F31E66D001005E2B06 /* AppDelegate.m in Sources */,
+				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +386,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7345DAE41E66FEAC0042B51D /* LineChart.m in Sources */,
+				7345DB1A1E6831880042B51D /* MainWeatherView.m in Sources */,
 				7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +517,7 @@
 			baseConfigurationReference = 99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;
@@ -499,6 +530,7 @@
 			baseConfigurationReference = A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;

@@ -26,11 +26,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXP-kt-hty">
+                                <rect key="frame" x="0.0" y="30" width="375" height="637"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vXP-kt-hty" secondAttribute="bottom" id="lcG-UG-gBo"/>
+                            <constraint firstItem="vXP-kt-hty" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p35-iX-eSb"/>
+                            <constraint firstAttribute="trailing" secondItem="vXP-kt-hty" secondAttribute="trailing" id="qCR-NI-1m2"/>
+                            <constraint firstItem="vXP-kt-hty" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="vwT-h4-gLU"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="scrollView" destination="vXP-kt-hty" id="YUr-a5-KH7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

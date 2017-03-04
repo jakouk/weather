@@ -13,18 +13,24 @@
 
 @property CGFloat width;
 @property CGFloat height;
+@property CGFloat maxValue;
+@property CGFloat margin;
 
 @end
 
 
 @implementation LineChart
 
-- (instancetype)init {
-    
-    self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @4, @2, @6, @4, @5, @8, @3]];
-    self.width = 0;
-    self.height = 0;
-    
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @4, @2, @6, @4, @5, @8, @3]];
+        self.width = 0;
+        self.height = 0;
+        self.maxValue = 0;
+    }
     return self;
 }
 
@@ -35,14 +41,10 @@
     self.height = rect.size.height;
     
     if ( self.graphPoints == nil ) {
-        self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @4, @2, @6, @4, @5, @8, @3]];
+        self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @10, @0, @20, @10, @0, @20, @10]];
     }
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(8.0, 8.0)];
-    [path addClip];
-
-    
-    UIColor *starColor = [UIColor redColor];
+    UIColor *starColor = [UIColor blueColor];
     UIColor *endColor = [UIColor grayColor];
     
     // get the current context
@@ -61,10 +63,6 @@
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colors, colorLocations);
     
-    
-    
-    
-    
     CGPoint startPoint = CGPointZero;
     CGPoint endPoint = CGPointMake(0, self.bounds.size.height);
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
@@ -82,9 +80,6 @@
         
         CGPoint nextPoint = CGPointMake([self columnXPoint:i], [self columnYPoint: [self.graphPoints[i] integerValue]]);
         
-        NSLog(@" x = %lf",nextPoint.x);
-        NSLog(@" y = %lf",nextPoint.y);
-        
         [graphPath addLineToPoint:nextPoint];
     }
     
@@ -92,14 +87,28 @@
     [graphPath stroke];
     
     
+    UIBezierPath *clippingPath = graphPath.copy;
+    
+    [clippingPath addLineToPoint:CGPointMake([self columnXPoint:self.graphPoints.count -1 ], self.height)];
+    [clippingPath addLineToPoint:CGPointMake([self columnXPoint:0], self.height)];
+    
+    [clippingPath closePath];
+    [clippingPath addClip];
+    
+    CGFloat highestYPoint = [self columnYPoint:self.maxValue];
+    startPoint = CGPointMake(self.margin, highestYPoint);
+    endPoint = CGPointMake(self.margin, self.bounds.size.height);
+    
+    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    
 }
 
 - (CGFloat)columnXPoint:(NSInteger)countNumber {
     
-    CGFloat margin = 20.0;
-    CGFloat spacer = (self.width - margin*2 -4) / self.graphPoints.count - 1;
+    self.margin = 20.0;
+    CGFloat spacer = (self.width - self.margin*2 -4) / (self.graphPoints.count - 1);
     CGFloat x = countNumber * spacer;
-    x += margin + 2;
+    x += self.margin + 2;
     
     return x;
     
@@ -110,20 +119,20 @@
     CGFloat topBorder = 60;
     CGFloat bottomBorder = 50;
     CGFloat graphHeight = self.height - topBorder - bottomBorder;
-    CGFloat maxValue = 0;
+    self.maxValue = 0;
     
     
     for ( NSInteger i = 0; i < self.graphPoints.count; i ++) {
         
         NSNumber *number = self.graphPoints[i];
         
-        if ( maxValue < [number integerValue] ) {
+        if ( self.maxValue < [number integerValue] ) {
             
-            maxValue = [number integerValue];
+            self.maxValue = [number integerValue];
         }
     }
     
-    CGFloat y = countNumber / maxValue * graphHeight;
+    CGFloat y = countNumber / self.maxValue * graphHeight;
     y = graphHeight + topBorder - y;
     
     return y;

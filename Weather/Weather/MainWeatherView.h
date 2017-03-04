@@ -11,7 +11,6 @@
 
 @interface MainWeatherView : UIView
 
-//c@property (weak, nonatomic) IBOutlet LineChart *temprature;
-
+@property (nonatomic) LineChart *temprature;
 
 @end

@@ -14,7 +14,7 @@
 
 + (void)requestForecastData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
-    NSString *URLString = @"http://apis.skplanetx.com/weather/forecast/3days?version=1";
+    NSString *URLString = [self requestURL:RequestTypeForecast];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -26,16 +26,12 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"성공");
-        NSLog(@"%@",responseObject);
-        
         [DataSingleTon sharedDataSingleTon].forecastData = responseObject;
         UpdateDataBlock();
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"실패");
-        NSLog(@"%@",error);
+        NSLog(@"네트워크 연결 실패");
         
     }];
     

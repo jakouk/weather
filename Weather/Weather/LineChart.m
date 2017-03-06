@@ -18,7 +18,6 @@
 
 @end
 
-
 @implementation LineChart
 
 - (instancetype)init
@@ -30,6 +29,8 @@
         self.width = 0;
         self.height = 0;
         self.maxValue = 0;
+        
+        [self setBackgroundColor:[UIColor clearColor]];
     }
     return self;
 }
@@ -44,7 +45,7 @@
         self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @10, @0, @20, @10, @0, @20, @10]];
     }
     
-    UIColor *starColor = [UIColor blueColor];
+    UIColor *starColor = [UIColor clearColor];
     UIColor *endColor = [UIColor grayColor];
     
     // get the current context
@@ -59,18 +60,15 @@
     CFArrayAppendValue(colors, endColor.CGColor);
     
     // create the gradient
-    CGFloat colorLocations[] = { 0.0f, 1.0f };
-    
+    CGFloat colorLocations[] = { 0.0f,1.0f };
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colors, colorLocations);
-    
     CGPoint startPoint = CGPointZero;
     CGPoint endPoint = CGPointMake(0, self.bounds.size.height);
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-
+    
+    // draw graph line
     
     [[UIColor whiteColor] setFill];
     [[UIColor whiteColor] setStroke];
-    
     
     UIBezierPath *graphPath = [[UIBezierPath alloc] init];
     [graphPath moveToPoint:CGPointMake( [self columnXPoint:0] ,
@@ -79,7 +77,6 @@
     for ( NSInteger i = 1; i < self.graphPoints.count; i++ ) {
         
         CGPoint nextPoint = CGPointMake([self columnXPoint:i], [self columnYPoint: [self.graphPoints[i] integerValue]]);
-        
         [graphPath addLineToPoint:nextPoint];
     }
     
@@ -87,19 +84,36 @@
     [graphPath stroke];
     
     
-    UIBezierPath *clippingPath = graphPath.copy;
+    // temperate Text draw
     
+    for ( NSInteger i =0; i < self.graphPoints.count; i++ ) {
+        
+        NSString * temperate = [[NSString alloc] initWithFormat:@"%ld°",[self.graphPoints[i] integerValue]];
+        [temperate drawAtPoint:CGPointMake([self columnXPoint:i], [self columnYPoint: [self.graphPoints[i] integerValue]] - 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    }
+    
+    // graphDownLine Area gradient
+    
+    UIBezierPath *clippingPath = graphPath.copy;
     [clippingPath addLineToPoint:CGPointMake([self columnXPoint:self.graphPoints.count -1 ], self.height)];
-    [clippingPath addLineToPoint:CGPointMake([self columnXPoint:0], self.height)];
+    [clippingPath addLineToPoint:CGPointMake([self columnXPoint:0], self.height-10)];
     
     [clippingPath closePath];
     [clippingPath addClip];
     
     CGFloat highestYPoint = [self columnYPoint:self.maxValue];
     startPoint = CGPointMake(self.margin, highestYPoint);
-    endPoint = CGPointMake(self.margin, self.bounds.size.height);
-    
+    endPoint = CGPointMake(self.margin, self.bounds.size.height-10);
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    
+    // graphLine
+    
+    UIBezierPath *weatherLine = graphPath.copy;
+    
+    [weatherLine moveToPoint:CGPointMake([self columnXPoint:6], [self columnYPoint: [self.graphPoints[6] integerValue]])];
+    [weatherLine addLineToPoint:CGPointMake([self columnXPoint:6], self.height-10)];
+    weatherLine.lineWidth = 0.5;
+    [weatherLine stroke];
     
 }
 
@@ -121,13 +135,11 @@
     CGFloat graphHeight = self.height - topBorder - bottomBorder;
     self.maxValue = 0;
     
-    
     for ( NSInteger i = 0; i < self.graphPoints.count; i ++) {
         
         NSNumber *number = self.graphPoints[i];
         
         if ( self.maxValue < [number integerValue] ) {
-            
             self.maxValue = [number integerValue];
         }
     }
@@ -138,13 +150,5 @@
     return y;
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

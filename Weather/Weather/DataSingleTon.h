@@ -12,6 +12,7 @@
 
 + (instancetype)sharedDataSingleTon;
 
+// forecastData
 @property NSDictionary *forecastData;
 
 @end

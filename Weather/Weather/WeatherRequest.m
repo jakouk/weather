@@ -23,39 +23,17 @@
     return urlRequest;
 }
 
-// GetType make method
-+ (NSURL *)requestURL:(RequestType)type param:(NSDictionary *)paramDic {
+// make URL
++ (NSString *)requestURL:(RequestType)type {
     
-    NSMutableString *urlString = [baseURL mutableCopy];
+    NSMutableString *URLString = [baseURL mutableCopy];
     
     switch (type) {
         case RequestTypeForecast:
-            [urlString appendFormat:@"/forecast/3days?"];
-            
+            [URLString appendFormat:@"/forecast/3days?version=1"];
     }
     
-    if ([paramDic count]) {
-        NSMutableString *paramString = [NSMutableString stringWithFormat:@"?"];
-        
-        for (NSString *key in paramDic) {
-            [paramString appendString:key];
-            [paramString appendString:@"="];
-            
-            if (paramDic[key] != nil) {
-                id value = paramDic[key];
-              
-                if ([value isKindOfClass:[NSString class]]) {
-                    [paramString appendString:value];
-                }
-                
-                [paramString appendString:@"&"];
-            }
-            
-        }
-        [urlString appendString:paramString];
-    }
-    
-    return [NSURL URLWithString:urlString];
+    return URLString;
     
 }
 

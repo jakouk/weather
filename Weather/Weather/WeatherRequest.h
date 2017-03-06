@@ -20,7 +20,7 @@ static NSString *baseURL = @"http://apis.skplanetx.com/weather";
 typedef void(^UpdateDataBlock)(void);
 
 // GetType make URL
-+ (NSURL *)requestURL:(RequestType)type param:(NSDictionary *)paramDic;
++ (NSString *)requestURL:(RequestType)type;
 
 // POSTtype make URL
 + (NSURL *)requestURL:(RequestType)type param:(NSDictionary *)paramDic postData:(NSString *)PostData;

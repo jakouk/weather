@@ -16,43 +16,58 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="londonbk" translatesAutoresizingMaskIntoConstraints="NO" id="YNn-Ae-uFo">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNn-Ae-uFo">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                 </imageView>
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03b-hO-heb">
-                    <rect key="frame" x="20" y="0.0" width="335" height="320"/>
+                    <rect key="frame" x="20" y="0.0" width="335" height="480"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zU-Ob-lDN">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zU-Ob-lDN">
                             <rect key="frame" x="10" y="10" width="315" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9q-jm-WRQ" customClass="LineChart">
-                            <rect key="frame" x="10" y="41" width="315" height="269"/>
+                            <rect key="frame" x="10" y="41" width="315" height="139.66666666666666"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9R-Ej-CTN">
+                            <rect key="frame" x="10" y="190.66666666666669" width="315" height="279.33333333333337"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="m9q-jm-WRQ" firstAttribute="leading" secondItem="03b-hO-heb" secondAttribute="leading" constant="10" id="1mX-W1-lJx"/>
+                        <constraint firstItem="m9q-jm-WRQ" firstAttribute="top" secondItem="0zU-Ob-lDN" secondAttribute="bottom" constant="10" id="6XV-uV-HvW"/>
+                        <constraint firstItem="e9R-Ej-CTN" firstAttribute="leading" secondItem="03b-hO-heb" secondAttribute="leading" constant="10" id="GrZ-TJ-ZiH"/>
+                        <constraint firstItem="e9R-Ej-CTN" firstAttribute="height" secondItem="m9q-jm-WRQ" secondAttribute="height" multiplier="2" id="KpJ-AS-Pf3"/>
                         <constraint firstItem="0zU-Ob-lDN" firstAttribute="leading" secondItem="03b-hO-heb" secondAttribute="leading" constant="10" id="UDL-lS-qwM"/>
+                        <constraint firstItem="e9R-Ej-CTN" firstAttribute="top" secondItem="m9q-jm-WRQ" secondAttribute="bottom" constant="10" id="WXR-ja-kCw"/>
                         <constraint firstItem="0zU-Ob-lDN" firstAttribute="top" secondItem="03b-hO-heb" secondAttribute="top" constant="10" id="aKj-1J-7iV"/>
-                        <constraint firstAttribute="trailing" secondItem="m9q-jm-WRQ" secondAttribute="trailing" constant="10" id="jJu-Pw-nRQ"/>
+                        <constraint firstAttribute="bottom" secondItem="e9R-Ej-CTN" secondAttribute="bottom" constant="10" id="asM-cP-Noo"/>
+                        <constraint firstAttribute="trailing" secondItem="e9R-Ej-CTN" secondAttribute="trailing" constant="10" id="eoP-yN-wsb"/>
                         <constraint firstAttribute="trailing" secondItem="0zU-Ob-lDN" secondAttribute="trailing" constant="10" id="mjy-Bq-Vnx"/>
-                        <constraint firstAttribute="bottom" secondItem="m9q-jm-WRQ" secondAttribute="bottom" constant="10" id="qnK-9T-Ha1"/>
-                        <constraint firstItem="m9q-jm-WRQ" firstAttribute="top" secondItem="0zU-Ob-lDN" secondAttribute="bottom" constant="10" id="zfi-SP-ahO"/>
+                        <constraint firstItem="m9q-jm-WRQ" firstAttribute="leading" secondItem="03b-hO-heb" secondAttribute="leading" constant="10" id="nIR-cn-HKx"/>
+                        <constraint firstAttribute="trailing" secondItem="m9q-jm-WRQ" secondAttribute="trailing" constant="10" id="tCh-NG-USr"/>
                     </constraints>
                 </view>
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KD-Ot-6ad">
-                    <rect key="frame" x="20" y="340" width="335" height="640"/>
+                    <rect key="frame" x="20" y="500" width="335" height="480"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1KD-Ot-6ad" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="67u-d3-SQ3"/>
                 <constraint firstAttribute="bottom" secondItem="YNn-Ae-uFo" secondAttribute="bottom" id="6S9-Z4-sCf"/>
                 <constraint firstItem="1KD-Ot-6ad" firstAttribute="top" secondItem="03b-hO-heb" secondAttribute="bottom" constant="20" id="81T-eN-fy0"/>
                 <constraint firstItem="YNn-Ae-uFo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EkP-0h-xfU"/>
-                <constraint firstItem="1KD-Ot-6ad" firstAttribute="height" secondItem="03b-hO-heb" secondAttribute="height" multiplier="2" id="MYB-Pz-nQH"/>
+                <constraint firstItem="1KD-Ot-6ad" firstAttribute="height" secondItem="03b-hO-heb" secondAttribute="height" id="MYB-Pz-nQH"/>
                 <constraint firstAttribute="trailing" secondItem="1KD-Ot-6ad" secondAttribute="trailing" constant="20" id="MYr-0c-EeV"/>
                 <constraint firstItem="03b-hO-heb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Tjg-dj-aZ3"/>
                 <constraint firstItem="03b-hO-heb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ul2-T8-KqF"/>
@@ -62,10 +77,7 @@
                 <constraint firstAttribute="trailing" secondItem="03b-hO-heb" secondAttribute="trailing" constant="20" id="dGl-ZT-Kt4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="48" y="-866"/>
+            <point key="canvasLocation" x="47.5" y="-866"/>
         </view>
     </objects>
-    <resources>
-        <image name="londonbk" width="1440" height="1440"/>
-    </resources>
 </document>

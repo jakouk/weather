@@ -10,7 +10,11 @@
 
 @interface MainView : UIView
 
-@property NSString *temperate;
-@property UIImage *weather;
+@property NSString *currentTemper;
+@property NSString *maxTemper;
+@property NSString *miniTemper;
+
+@property NSString *weatherName;
+@property NSString *weatherImageName;
 
 @end

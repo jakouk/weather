@@ -41,12 +41,18 @@
     self.width = rect.size.width;
     self.height = rect.size.height;
     
+    
+    NSString *uiViewName = @"예보";
+    [uiViewName drawAtPoint:CGPointMake(20, 0) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    
+    
     if ( self.graphPoints == nil ) {
         self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @10, @0, @20, @10, @0, @20, @10]];
     }
     
     UIColor *starColor = [UIColor clearColor];
-    UIColor *endColor = [UIColor grayColor];
+    UIColor *endColor = [UIColor whiteColor];
     
     // get the current context
     CGContextRef context = UIGraphicsGetCurrentContext();

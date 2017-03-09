@@ -31,20 +31,15 @@
     switch (type) {
         case RequestTypeForecast:
             [URLString appendFormat:@"/forecast/3days?version=1"];
+            break;
+        case RequestTypeCurrent:
+            [URLString appendFormat:@"/current/minutely?version=1"];
+            break;
     }
     
     return URLString;
     
 }
-
-
-// POSTtype make method
-//+ (NSURL *)requestURL:(RequestType)type param:(NSDictionary *)paramDic postData:(NSString *)PostData {
-//    
-//    NSMutableString *urlString = [baseURL mutableCopy];
-//    
-//    
-//}
 
 
 + (void)addAppkey:(AFHTTPSessionManager *)httpSessionManager {

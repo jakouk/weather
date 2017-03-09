@@ -11,6 +11,8 @@
 #import "MainWeatherView.h"
 #import "LineChart.h"
 #import "WEForecastManager.h"
+#import "WECurrentManager.h"
+#import "MainView.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 
@@ -26,18 +28,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.alphaView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.0];
+    self.alphaView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*2);
     
     self.scrollView.delegate = self;
     
-    NSDictionary *data = @{@"lon":@"37",@"village":@"",@"country":@"",@"foretxt":@"",@"lat":@"127",@"city":@"",@"version":@"1"};
+    NSDictionary *data = @{@"lon":@"37",@"village":@"",@"country":@"",@"foretxt":@"",@"lat":@"127",@"city":@""};
     
     __block ViewController *wself = self;
     
-    [WEForecastManager requestForecastData:data updateDataBlock:^{
+    [WECurrentManager requestCurrenttData:data updateDataBlock:^{
         
-        [wself viewReload];
+        [WEForecastManager requestForecastData:data updateDataBlock:^{
+            
+            [wself mainViewReload];
+            [wself lineChartViewReload];
+        }];
+        
     }];
 }
 
@@ -55,15 +62,47 @@
     if ( scrollView.contentOffset. y < 400 ) {
         
         CGFloat alpha = 0;
-        alpha = scrollView.contentOffset.y / 800;
-        self.alphaView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:alpha];
+        alpha = scrollView.contentOffset.y / 600;
+        self.alphaView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
         
     }
     
 }
 
 
-- (void)viewReload {
+
+- (void)mainViewReload {
+    
+    MainView *mainView = [[MainView alloc] init];
+    mainView.frame = CGRectMake(0, self.scrollView.frame.size.height/3 * 2, self.scrollView.frame.size.width, self.scrollView.frame.size.height/3);
+    
+    NSDictionary *currentData = [DataSingleTon sharedDataSingleTon].currentData;
+
+    NSDictionary *weatehr = currentData[@"weather"];
+    NSArray *minutely = weatehr[@"minutely"];
+    NSDictionary *minutelyFirstObject = minutely[0];
+    
+    NSDictionary *temperature = minutelyFirstObject[@"temperature"];
+    
+    NSDictionary *sky = minutelyFirstObject[@"sky"];
+    NSString *skyMin = sky[@"code"];
+    NSString *skyName = sky[@"name"];
+    NSString *skyIn = [skyMin substringFromIndex:5];
+    
+    mainView.weatherImageName = skyIn;
+    mainView.weatherName = skyName;
+    mainView.currentTemper = temperature[@"tc"];
+    mainView.maxTemper = temperature[@"tmax"];
+    mainView.miniTemper = temperature[@"tmin"];
+    
+    [mainView setNeedsDisplay];
+    
+    [self.scrollView addSubview:mainView];
+    
+}
+
+
+- (void)lineChartViewReload {
     
     MainWeatherView *mainChart = [[[NSBundle mainBundle] loadNibNamed:@"MainWeatherView" owner:self options:nil] firstObject];
     
@@ -97,7 +136,6 @@
     }
     
     
-    
     NSMutableArray *skyArray = [[NSMutableArray alloc] init];
     NSString *code = @"code";
     
@@ -107,7 +145,6 @@
         [key appendString:code];
         [key appendFormat:@"%ld",i];
         [key appendString:hour];
-        NSLog(@"key = %@",key);
         
         NSString *weatherSky = sky[key];
         [skyArray addObject:weatherSky];
@@ -117,9 +154,7 @@
     for ( UIView *subView in [mainChart subviews]) {
         
         if ( subView.tag == 1) {
-            
-            NSLog(@"%@",subView);
-            
+
             for ( UIView *subViewSub in [subView subviews]) {
                 
                 if ( [subViewSub isKindOfClass:[LineChart class]]) {
@@ -140,13 +175,10 @@
     
     LineChart * name = [[LineChart alloc] init];
    
-    name.frame = CGRectMake(0, self.view.frame.size.height + 10, self.view.frame.size.width-20, self.view.frame.size.height / 4);
+    name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width-20, self.scrollView.frame.size.height / 4);
     
     name.graphPoints = temperatureArray;
     [name setNeedsDisplay];
-    
-    NSLog(@"HELLO");
-    
     [self.scrollView addSubview:name];
 
 }

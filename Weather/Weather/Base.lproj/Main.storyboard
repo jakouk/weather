@@ -26,13 +26,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="londonbk" translatesAutoresizingMaskIntoConstraints="NO" id="vJe-F2-1GY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="londonbk" translatesAutoresizingMaskIntoConstraints="NO" id="vJe-F2-1GY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyA-qP-8gt">
-                                <rect key="frame" x="0.0" y="-1" width="375" height="668"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyA-qP-8gt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXP-kt-hty">
@@ -41,6 +39,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="EyA-qP-8gt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1rr-tQ-ZhG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vJe-F2-1GY" secondAttribute="bottom" id="5a8-Kh-6Mf"/>
+                            <constraint firstItem="vJe-F2-1GY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NL0-dt-Ms9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EyA-qP-8gt" secondAttribute="bottom" id="QKk-4l-KOQ"/>
+                            <constraint firstItem="vJe-F2-1GY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QZ6-AK-cgY"/>
+                            <constraint firstItem="EyA-qP-8gt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="S78-o5-J6d"/>
+                            <constraint firstAttribute="trailing" secondItem="EyA-qP-8gt" secondAttribute="trailing" id="dLy-hr-fyK"/>
+                            <constraint firstAttribute="trailing" secondItem="vJe-F2-1GY" secondAttribute="trailing" id="kyU-vr-wWa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vXP-kt-hty" secondAttribute="bottom" id="lcG-UG-gBo"/>
                             <constraint firstItem="vXP-kt-hty" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p35-iX-eSb"/>
                             <constraint firstAttribute="trailing" secondItem="vXP-kt-hty" secondAttribute="trailing" id="qCR-NI-1m2"/>

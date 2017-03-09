@@ -16,6 +16,8 @@
     
     NSString *URLString = [self requestURL:RequestTypeForecast];
     
+    
+    
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -31,7 +33,8 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"네트워크 연결 실패");
+        NSLog(@"예보 네트워크 연결 실패");
+        
         
     }];
     

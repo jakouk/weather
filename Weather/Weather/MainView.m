@@ -24,9 +24,9 @@
     
     CGFloat height = rect.size.height;
     
-    [[UIImage imageNamed:@"Up-50"] drawAtPoint:CGPointMake(20,height/9 * 4)];
-    [[UIImage imageNamed:@"Down-50"] drawAtPoint:CGPointMake(110, height/9 * 4)];
     [[UIImage imageNamed:self.weatherImageName] drawAtPoint:CGPointMake(20, height/9 * 1 - 20)];
+    [[UIImage imageNamed:@"Up-50"] drawAtPoint:CGPointMake(20,height/9 * 4 - 10)];
+    [[UIImage imageNamed:@"Down-50"] drawAtPoint:CGPointMake(120, height/9 * 4 - 10)];
     
     // current Temperature
     NSString *temperature = [[NSString alloc] initWithFormat:@"%@°",_currentTemper];
@@ -34,11 +34,11 @@
     
     // maxTemper
     NSString *maxTemper = [[NSString alloc] initWithFormat:@"%@°",_maxTemper];
-    [maxTemper drawAtPoint:CGPointMake(65, (height/9 * 4) + 15) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [maxTemper drawAtPoint:CGPointMake(65, (height/9 * 4) + 5) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     // minTemper
     NSString *minTemper = [[NSString alloc] initWithFormat:@"%@°",_miniTemper];
-    [minTemper drawAtPoint:CGPointMake(150, (height/9 * 4) + 10) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [minTemper drawAtPoint:CGPointMake(160, (height/9 * 4) + 5) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     // wwatherName
     [self.weatherName drawAtPoint:CGPointMake(130, (height/9 * 3) - 15) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:25.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];

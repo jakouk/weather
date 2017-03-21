@@ -1,18 +1,18 @@
 //
-//  WECurrentManager.m
+//  WEWeekRequest.m
 //  Weather
 //
-//  Created by jakouk on 2017. 3. 7..
+//  Created by jakouk on 2017. 3. 21..
 //  Copyright © 2017년 jakouk. All rights reserved.
 //
 
-#import "WECurrentManager.h"
+#import "WEWeekRequest.h"
 
-@implementation WECurrentManager
+@implementation WEWeekRequest
 
-+ (void)requestCurrenttData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
++ (void)requestWeekForcastData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
-    NSString *URLString = [self requestURL:RequestTypeCurrent];
+    NSString *URLString = [self requestURL:RequestTypeWeekForcast];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -24,15 +24,17 @@
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            [DataSingleTon sharedDataSingleTon].currentData = responseObject;
+            [DataSingleTon sharedDataSingleTon].weekForcastData = responseObject;
+            NSLog(@"response = %@",responseObject);
+            
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            NSLog(@"현재 온도 네트워크 연결 실패");
+            NSLog(@"6일 예보 실패");
             
         }];
-
+    
     
 }
 

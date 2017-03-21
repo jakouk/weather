@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "DataSingleTon.h"
 
 typedef NS_ENUM(NSInteger, RequestType) {
     RequestTypeForecast,
-    RequestTypeCurrent
+    RequestTypeCurrent,
+    RequestTypeWeekForcast
 };
 
 static NSString *baseURL = @"http://apis.skplanetx.com/weather";
@@ -42,12 +44,5 @@ typedef void(^UpdateDataBlock)(void);
  
  ***/
 + (void)addAppkey:(AFHTTPSessionManager *)httpSessionManager;
-
-
-// POSTtype make URL
-+ (NSURL *)requestURL:(RequestType)type param:(NSDictionary *)paramDic postData:(NSString *)PostData;
-
-// reqeustMehotd
-+ (NSMutableURLRequest *)requestURL:(NSURL *)url httpMethod:(NSString *)httpMethod;
 
 @end

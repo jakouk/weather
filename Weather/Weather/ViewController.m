@@ -7,18 +7,23 @@
 //
 
 #import "ViewController.h"
-#import <CoreGraphics/CoreGraphics.h>
+#import <CoreLocation/CoreLocation.h>
 #import "MainWeatherView.h"
 #import "LineChart.h"
 #import "WEForecastManager.h"
 #import "WECurrentManager.h"
+#import "WEWeekRequest.h"
 #import "MainView.h"
+#import "WeekForecast.h"
 
-@interface ViewController () <UIScrollViewDelegate>
+@interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *alphaView;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property NSString *latitude;
+@property NSString *longitude;
 
 @end
 
@@ -33,7 +38,26 @@
     
     self.scrollView.delegate = self;
     
-    NSDictionary *data = @{@"lon":@"37",@"village":@"",@"country":@"",@"foretxt":@"",@"lat":@"127",@"city":@""};
+    // Location Manager 생성
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    // Location Receiver 콜백에 대한 delegate 설정
+    self.locationManager.delegate = self;
+    
+    // 사용중에만 위치 정보 요청
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    // Location Manager 시작하기
+    [self.locationManager startUpdatingLocation];
+    
+    self.latitude = [[NSString alloc] initWithFormat:@"%lf",self.locationManager.location.coordinate.latitude];
+    CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
+    self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
+    
+    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
+    
     
     __block ViewController *wself = self;
     
@@ -41,13 +65,23 @@
         
         [WEForecastManager requestForecastData:data updateDataBlock:^{
             
-            [wself mainViewReload];
-            [wself lineChartViewReload];
+            [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
+                
+                [wself mainViewReload];
+                [wself lineChartViewReload];
+                [wself weekDataReload];
+                
+                
+            }];
+            
         }];
         
     }];
+    
+    NSTimeZone *timezone = [NSTimeZone localTimeZone];
+    NSLog(@"timezone = %@",timezone);
+    
 }
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -66,15 +100,13 @@
         self.alphaView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
         
     }
-    
 }
-
 
 
 - (void)mainViewReload {
     
     MainView *mainView = [[MainView alloc] init];
-    mainView.frame = CGRectMake(0, self.scrollView.frame.size.height/3 * 2, self.scrollView.frame.size.width, self.scrollView.frame.size.height/3);
+    mainView.frame = CGRectMake(0, self.scrollView.frame.size.height/3 * 2 - 20 , self.scrollView.frame.size.width, self.scrollView.frame.size.height/3);
     
     NSDictionary *currentData = [DataSingleTon sharedDataSingleTon].currentData;
 
@@ -83,8 +115,11 @@
     NSDictionary *minutelyFirstObject = minutely[0];
     
     NSDictionary *temperature = minutelyFirstObject[@"temperature"];
-    
     NSDictionary *sky = minutelyFirstObject[@"sky"];
+    NSDictionary *station = minutelyFirstObject[@"station"];
+    
+    NSLog(@"station = %@",station[@"name"]);
+    
     NSString *skyMin = sky[@"code"];
     NSString *skyName = sky[@"name"];
     NSString *skyIn = [skyMin substringFromIndex:5];
@@ -101,22 +136,16 @@
     
 }
 
-
 - (void)lineChartViewReload {
     
-    MainWeatherView *mainChart = [[[NSBundle mainBundle] loadNibNamed:@"MainWeatherView" owner:self options:nil] firstObject];
-    
-    LineChart *tempara;
-    
     NSDictionary *forecastData = [DataSingleTon sharedDataSingleTon].forecastData;
+    
     NSDictionary *weather = forecastData[@"weather"];
     NSArray *forcast3Datas = weather[@"forecast3days"];
     
     NSDictionary *forcast3DatasFirstObject = forcast3Datas[0];
     NSDictionary *fcst3hour = forcast3DatasFirstObject[@"fcst3hour"];
-    
     NSDictionary *temperature = fcst3hour[@"temperature"];
-    
     NSDictionary *sky = fcst3hour[@"sky"];
     
     NSMutableArray *temperatureArray = [[NSMutableArray alloc] init];
@@ -135,7 +164,6 @@
         [temperatureArray addObject:number];
     }
     
-    
     NSMutableArray *skyArray = [[NSMutableArray alloc] init];
     NSString *code = @"code";
     
@@ -151,36 +179,24 @@
     }
     
     
-    for ( UIView *subView in [mainChart subviews]) {
-        
-        if ( subView.tag == 1) {
-
-            for ( UIView *subViewSub in [subView subviews]) {
-                
-                if ( [subViewSub isKindOfClass:[LineChart class]]) {
-                    tempara = (LineChart *)subViewSub;
-                }
-            }
-        }
-    }
-    
-    if (tempara != nil) {
-        
-        tempara.graphPoints = temperatureArray;
-        [tempara setNeedsDisplay];
-    }
-    
-    
-    // [self.scrollView addSubview:mainChart];
     
     LineChart * name = [[LineChart alloc] init];
-   
-    name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width-20, self.scrollView.frame.size.height / 4);
-    
+    name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width, self.scrollView.frame.size.height / 3);
     name.graphPoints = temperatureArray;
-    [name setNeedsDisplay];
+    // [name setNeedsDisplay];
+    
+    [name performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:0 waitUntilDone:NO];
     [self.scrollView addSubview:name];
 
+}
+
+- (void)weekDataReload {
+    
+    WeekForecast *weekForcast = [[WeekForecast alloc] init];
+    weekForcast.frame = CGRectMake(0, self.scrollView.frame.size.height +20 + self.scrollView.frame.size.height / 3 + 10, self.scrollView.frame.size.width, self.scrollView.frame.size.height/ 3);
+    
+    [self.scrollView addSubview:weekForcast];
+    
 }
 
 - (NSArray *)temperateDataReturn:(NSString *)apiKey {

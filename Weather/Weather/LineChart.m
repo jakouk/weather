@@ -7,6 +7,7 @@
 //
 
 #import "LineChart.h"
+#import <UserNotifications/UserNotifications.h>
 
 
 @interface LineChart ()
@@ -43,9 +44,7 @@
     
     
     NSString *uiViewName = @"예보";
-    [uiViewName drawAtPoint:CGPointMake(20, 0) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    
+    [uiViewName drawAtPoint:CGPointMake(20, 0) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:25.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     if ( self.graphPoints == nil ) {
         self.graphPoints = [[NSMutableArray alloc] initWithArray: @[ @10, @0, @20, @10, @0, @20, @10]];
@@ -72,11 +71,14 @@
     CGPoint endPoint = CGPointMake(0, self.bounds.size.height);
     
     // draw graph line
-    
     [[UIColor whiteColor] setFill];
     [[UIColor whiteColor] setStroke];
     
     UIBezierPath *graphPath = [[UIBezierPath alloc] init];
+    
+    // subject bottom draw line
+    [graphPath moveToPoint:CGPointMake(20, 30)];
+    [graphPath addLineToPoint:CGPointMake(self.width - 20, 30)];
     [graphPath moveToPoint:CGPointMake( [self columnXPoint:0] ,
                                        [self columnYPoint: [self.graphPoints[0] integerValue]])];
     
@@ -86,20 +88,104 @@
         [graphPath addLineToPoint:nextPoint];
     }
     
-    graphPath.lineWidth = 2.0;
+    graphPath.lineWidth = 1.0;
     [graphPath stroke];
     
     
-    // temperate Text draw
     
+    // time Text
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *currentTime = [dateFormatter stringFromDate:today];
+    NSArray *hourList = [currentTime componentsSeparatedByString:@":"];
+    NSString *hourString = hourList[0];
+    NSString *hourApm = hourList[1];
+    
+    NSArray *apmList = [hourApm componentsSeparatedByString:@" "];
+    NSString *apmString = apmList[1];
+    
+    NSInteger hour = [hourString integerValue];
+    NSInteger nowHour = hour;
+    
+    NSMutableArray *hourStringArray = [[NSMutableArray alloc] init];
+    
+    for ( NSInteger i = 4; i < 41; i += 9) {
+        
+        hour = nowHour;
+        hour += i;
+        
+        if ( [apmString isEqualToString:@"PM"]) {
+            
+            NSInteger j = 0;
+            while ( hour >= 12 ) {
+                hour -= 12;
+                j = j + 1;
+            }
+            if ( j % 2 != 0) {
+                apmString = @"AM";
+            }
+            
+        } else {
+            
+            NSInteger j = 0;
+            while ( hour >= 12 ) {
+                hour -= 12;
+                j = j + 1;
+            }
+            if ( j % 2 == 0) {
+                apmString = @"PM";
+            }
+            
+        }
+        
+        if ( hour == 0 ) {
+            hour = 12;
+        }
+        
+        NSString *hourApmString = [[NSString alloc] initWithFormat:@"%ld%@",hour,apmString];
+        [hourStringArray addObject:hourApmString];
+        
+    }
+    
+    UIBezierPath *weatherLine = graphPath.copy;
+    
+    // temperate Text draw
     for ( NSInteger i =0; i < self.graphPoints.count; i++ ) {
         
         NSString * temperate = [[NSString alloc] initWithFormat:@"%ld°",[self.graphPoints[i] integerValue]];
         [temperate drawAtPoint:CGPointMake([self columnXPoint:i], [self columnYPoint: [self.graphPoints[i] integerValue]] - 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        if ( i < hourStringArray.count ) {
+            
+            NSString *hourApmString = hourStringArray[i];
+            [hourApmString drawAtPoint:CGPointMake([self columnXPoint:i*3] - 10, self.height - 20) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+            
+            [weatherLine moveToPoint:CGPointMake([self columnXPoint:i*3], self.height * 0.85)];
+            [weatherLine addLineToPoint:CGPointMake([self columnXPoint:i*3], self.height-20)];
+            weatherLine.lineWidth = 0.5;
+            
+        }
+        
     }
     
-    // graphDownLine Area gradient
     
+    
+    // temperate Time Text
+    
+//    for ( NSInteger i = 0; i < hourStringArray.count; i++ ) {
+//        
+//        NSString *hourApmString = hourStringArray[i];
+//        NSLog(@"currentTime = %@",hourApmString);
+//        
+//        [hourApmString drawAtPoint:CGPointMake([self columnXPoint:i], self.height) withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//        
+//        NSLog(@"self columnXPoint i = %lf",[self columnXPoint:i]);
+//        NSLog(@"self self.height = %lf",self.height);
+//    }
+    
+    
+    // graphDownLine Area gradient
     UIBezierPath *clippingPath = graphPath.copy;
     [clippingPath addLineToPoint:CGPointMake([self columnXPoint:self.graphPoints.count -1 ], self.height)];
     [clippingPath addLineToPoint:CGPointMake([self columnXPoint:0], self.height-10)];
@@ -110,17 +196,15 @@
     CGFloat highestYPoint = [self columnYPoint:self.maxValue];
     startPoint = CGPointMake(self.margin, highestYPoint);
     endPoint = CGPointMake(self.margin, self.bounds.size.height-10);
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    //CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    
     
     // graphLine
     
-    UIBezierPath *weatherLine = graphPath.copy;
     
-    [weatherLine moveToPoint:CGPointMake([self columnXPoint:6], [self columnYPoint: [self.graphPoints[6] integerValue]])];
-    [weatherLine addLineToPoint:CGPointMake([self columnXPoint:6], self.height-10)];
-    weatherLine.lineWidth = 0.5;
     [weatherLine stroke];
     
+   
 }
 
 - (CGFloat)columnXPoint:(NSInteger)countNumber {
@@ -155,6 +239,7 @@
     
     return y;
 }
+
 
 
 @end

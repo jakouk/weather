@@ -11,5 +11,6 @@
 @interface LineChart : UIView
 
 @property NSMutableArray *graphPoints;
+@property NSArray *timeArray;
 
 @end

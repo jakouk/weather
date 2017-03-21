@@ -11,17 +11,6 @@
 
 @implementation WeatherRequest
 
-// reqeustMehotd
-+ (NSMutableURLRequest *)requestURL:(NSURL *)url httpMethod:(NSString *)httpMethod{
-    
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    if (![httpMethod isEqualToString:@"POST"]) {
-        [urlRequest setHTTPMethod:httpMethod];
-    }
-    
-    return urlRequest;
-}
 
 // make URL
 + (NSString *)requestURL:(RequestType)type {
@@ -34,6 +23,9 @@
             break;
         case RequestTypeCurrent:
             [URLString appendFormat:@"/current/minutely?version=1"];
+            break;
+        case RequestTypeWeekForcast:
+            [URLString appendString:@"/forecast/6days?version=1"];
             break;
     }
     

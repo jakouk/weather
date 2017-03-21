@@ -8,7 +8,6 @@
 
 #import "WEForecastManager.h"
 #import <AFNetworking.h>
-#import "DataSingleTon.h"
 
 @implementation WEForecastManager
 
@@ -30,6 +29,8 @@
         
         [DataSingleTon sharedDataSingleTon].forecastData = responseObject;
         UpdateDataBlock();
+        
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
+        self.weekdayWeather = [[NSArray alloc] init];
     }
     return self;
 }
@@ -39,13 +40,18 @@
     for ( NSInteger i = 0; i < dayArray.count; i++) {
         
         NSString *weekDay = dayArray[i];
-        NSLog(@"weekDay = %@",weekDay);
         [weekDay drawAtPoint:CGPointMake(20, (rect.size.height / dayArray.count) * i + 10 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
         
+        if (self.weekdayWeather != nil) {
+            
+            NSString *weekDayWeather = self.weekdayWeather[i];
+            NSLog(@"weekDayWeather = %@",weekDayWeather);
+            
+            [[UIImage imageNamed:weekDayWeather] drawAtPoint: CGPointMake(rect.size.width - 20 / 2 - 10, (rect.size.height / dayArray.count) * i + 10)];
+            
+        }
+        
     }
-    
-    
-    
     
 }
 

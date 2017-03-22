@@ -10,6 +10,6 @@
 
 @interface WeekForecast : UIView
 
-
+@property NSArray *weekdayWeather;
 
 @end

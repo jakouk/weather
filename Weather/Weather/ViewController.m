@@ -34,7 +34,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.alphaView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*2);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*3);
     
     self.scrollView.delegate = self;
     
@@ -178,10 +178,8 @@
         [skyArray addObject:weatherSky];
     }
     
-    
-    
     LineChart * name = [[LineChart alloc] init];
-    name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width, self.scrollView.frame.size.height / 3);
+    name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width, self.scrollView.frame.size.height/2.5 );
     name.graphPoints = temperatureArray;
     // [name setNeedsDisplay];
     
@@ -193,7 +191,7 @@
 - (void)weekDataReload {
     
     WeekForecast *weekForcast = [[WeekForecast alloc] init];
-    weekForcast.frame = CGRectMake(0, self.scrollView.frame.size.height +20 + self.scrollView.frame.size.height / 3 + 10, self.scrollView.frame.size.width, self.scrollView.frame.size.height/ 3);
+    weekForcast.frame = CGRectMake(0, self.scrollView.frame.size.height +20 + self.scrollView.frame.size.height / 2.5 + 10, self.scrollView.frame.size.width, (self.scrollView.frame.size.height / 3) * 2 );
     
     
     NSDictionary *weekForcastData = [DataSingleTon sharedDataSingleTon].weekForcastData;
@@ -201,59 +199,72 @@
     NSArray *forecast6days = weather[@"forecast6days"];
     NSDictionary *forecast6daysFirst = forecast6days[0];
     NSDictionary *sky = forecast6daysFirst[@"sky"];
+    NSDictionary *temperature = forecast6daysFirst[@"temperature"];
     
-    NSMutableArray *forecast6daysArray = [[NSMutableArray alloc] init];
-    NSMutableArray *forecaset6daysSkyArray = [[NSMutableArray alloc] init];
     
-    NSMutableString *dayWeather = [[NSMutableString alloc] init];
-    NSMutableString *dayWeatherImageName = [[NSMutableString alloc] init];
-    NSMutableString *skySplitFirst = [[NSMutableString alloc] init];
+    NSMutableArray *forecast6daysAmArray = [[NSMutableArray alloc] init];
+    NSMutableArray *forecast6daysPmArray = [[NSMutableArray alloc] init];
+    
+    NSMutableString *dayAmWeather = [[NSMutableString alloc] init];
+    NSMutableString *dayPmWeather = [[NSMutableString alloc] init];
     
     
     NSString *amCode = @"amCode";
+    NSString *pmCode = @"pmCode";
     NSString *day = @"day";
-    NSString *threeSize = @"-3";
-    
-    NSString *weatherImage = @"";
     
     
     for ( NSInteger i = 2; i < 8; i++ ) {
         
-        [dayWeather appendString:amCode];
-        [dayWeather appendFormat:@"%ld",i];
-        [dayWeather appendString:day];
+        [dayAmWeather appendString:amCode];
+        [dayAmWeather appendFormat:@"%ld",i];
+        [dayAmWeather appendString:day];
         
-        NSString *skyw = sky[dayWeather];
-        [forecaset6daysSkyArray addObject:skyw];
+        [dayPmWeather appendString:pmCode];
+        [dayPmWeather appendFormat:@"%ld",i];
+        [dayPmWeather appendString:day];
         
-    }
-    
-    for ( NSInteger i = 0; i < forecaset6daysSkyArray.count; i++ ) {
+        NSString *skyAm = sky[dayAmWeather];
+        NSString *skyPm = sky[dayPmWeather];
         
-        NSArray *skywSplit = [forecaset6daysSkyArray[i] componentsSeparatedByString:@"W"];
-        //NSLog(@"%@,%@",skywSplit[1], [skywSplit[1] class]);
-        [skySplitFirst appendFormat:@"%@",skywSplit[1]];
+        [forecast6daysAmArray addObject:skyAm];
+        [forecast6daysPmArray addObject:skyPm];
         
-        [dayWeatherImageName appendFormat:@"%@",skySplitFirst];
-        [dayWeatherImageName appendString:threeSize];
-        
-        NSLog(@"dayWeatherImageName = %@",dayWeatherImageName);
-        
-        weatherImage = dayWeatherImageName;
-        
-        [forecast6daysArray addObject:weatherImage];
-        NSLog(@"forcast6daysArray = %@",forecast6daysArray);
-        
-        [dayWeatherImageName setString:@""];
-        [dayWeather setString:@""];
-        [skySplitFirst setString:@""];
-        weatherImage = @"";
+        [dayAmWeather setString:@""];
+        [dayPmWeather setString:@""];
         
     }
     
-    NSLog(@"forcast6daysArray = %@",forecast6daysArray);
+    NSMutableArray *tmaxArray = [[NSMutableArray alloc] init];
+    NSMutableArray *tminArray = [[NSMutableArray alloc] init];
     
-    weekForcast.weekdayWeather = forecast6daysArray;
+    NSMutableString *tMax = [[NSMutableString alloc] init];
+    NSMutableString *tMin = [[NSMutableString alloc] init];
+    
+    NSString *tmax = @"tmax";
+    NSString *tmin = @"tmin";
+    
+    for ( NSInteger i = 2; i < 8; i++ ) {
+        
+        [tMax appendString:tmax];
+        [tMax appendFormat:@"%ld",i];
+        [tMax appendString:day];
+        
+        [tMin appendString:tmin];
+        [tMin appendFormat:@"%ld",i];
+        [tMin appendString:day];
+        
+        [tmaxArray addObject:temperature[tMax]];
+        [tminArray addObject:temperature[tMin]];
+        
+        [tMax setString:@""];
+        [tMin setString:@""];
+    }
+    
+    weekForcast.weekdayAmWeather = forecast6daysAmArray;
+    weekForcast.weekdayPmWeather = forecast6daysPmArray;
+    weekForcast.weekdayMax = tmaxArray;
+    weekForcast.weekdayMin = tminArray;
     
     [weekForcast setNeedsDisplay];
     [self.scrollView addSubview:weekForcast];

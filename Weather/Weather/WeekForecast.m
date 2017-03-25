@@ -15,7 +15,6 @@
     self = [super init];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
-        self.weekdayWeather = [[NSArray alloc] init];
     }
     return self;
 }
@@ -36,22 +35,66 @@
     NSDateComponents *component = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
     
     NSArray *dayArray = [self weekDayReturnKorean:component.weekday];
+    NSArray *splitArray;
+    
+    NSMutableString *imageName = [[NSMutableString alloc] init];
+    NSString *three = @"-3";
     
     for ( NSInteger i = 0; i < dayArray.count; i++) {
         
         NSString *weekDay = dayArray[i];
-        [weekDay drawAtPoint:CGPointMake(20, (rect.size.height / dayArray.count) * i + 10 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
         
-        if (self.weekdayWeather != nil) {
-            
-            NSString *weekDayWeather = self.weekdayWeather[i];
-            NSLog(@"weekDayWeather = %@",weekDayWeather);
-            
-            [[UIImage imageNamed:weekDayWeather] drawAtPoint: CGPointMake(rect.size.width - 20 / 2 - 10, (rect.size.height / dayArray.count) * i + 10)];
+        [weekDay drawAtPoint:CGPointMake(25, (rect.size.height / dayArray.count) * i + 25 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        [@"AM" drawAtPoint:CGPointMake(rect.size.width/6 + 15, (rect.size.height / dayArray.count) * i + 25 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        [@"PM" drawAtPoint:CGPointMake(rect.size.width/2.2 + 4 , (rect.size.height / dayArray.count) * i + 25 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        
+        if ( self.weekdayAmWeather != nil ) {
+
+            if ( self.weekdayPmWeather != nil ) {
+                
+                [weekForcastPath moveToPoint:CGPointMake(20, (rect.size.height / dayArray.count) * (i + 1))];
+                [weekForcastPath addLineToPoint:CGPointMake(rect.size.width - 20, (rect.size.height / dayArray.count) * (i + 1))];
+                
+                splitArray = [self.weekdayAmWeather[i] componentsSeparatedByString:@"W"];
+                NSString *weekDayAmWeather = splitArray[1];
+                
+                [imageName appendString:weekDayAmWeather];
+                [imageName appendString:three];
+                
+                [[UIImage imageNamed:imageName] drawAtPoint: CGPointMake(((rect.size.width - 20) / 3.8), (rect.size.height / dayArray.count) * i)];
+                
+                [imageName setString:@""];
+                
+                splitArray = [self.weekdayPmWeather[i] componentsSeparatedByString:@"W"];
+                NSString *weekDayPmWeather = splitArray[1];
+                
+                [imageName appendString:weekDayPmWeather];
+                [imageName appendString:three];
+                
+                [[UIImage imageNamed:imageName] drawAtPoint: CGPointMake(((rect.size.width - 20) / 2) + 15 , (rect.size.height / dayArray.count) * i)];
+                
+                [imageName setString:@""];
+            }
             
         }
         
+        
+        NSString *tmax = [[NSString alloc] initWithFormat:@"%@°",_weekdayMax[i]];
+        NSString *tmin = [[NSString alloc] initWithFormat:@"%@°",_weekdayMin[i]];
+        
+        [tmax drawAtPoint:CGPointMake(rect.size.width/2 + rect.size.width/4, (rect.size.height / dayArray.count) * i + 25 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        [tmin drawAtPoint:CGPointMake(rect.size.width - rect.size.width/10, (rect.size.height / dayArray.count) * i + 25 ) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:20],NSForegroundColorAttributeName:[UIColor colorWithRed:0.38 green:0.50 blue:0.60 alpha:1.00]}];
     }
+    
+    
+    [[UIColor whiteColor] setFill];
+    [[UIColor whiteColor] setStroke];
+    weekForcastPath.lineWidth = 0.25;
+    [weekForcastPath stroke];
     
 }
 
@@ -61,6 +104,11 @@
     NSMutableArray *weekDayArray = [[NSMutableArray alloc] init];
     
     componentWeekDay += 2;
+    
+    if ( componentWeekDay >= 8) {
+        
+        componentWeekDay -= 7;
+    }
     
     for ( NSInteger i = 0; i < 6; i ++ ) {
         
@@ -100,7 +148,6 @@
     }
     
     return weekDayArray;
-    
 }
 
 @end

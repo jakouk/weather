@@ -216,8 +216,7 @@
 				73DC150C1E811AF80017D47D /* MainController.h */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
-				734267F71E66D001005E2B06 /* Main.storyboard */,
-				73DC15101E811B6F0017D47D /* Home.storyboard */,
+				73C1ED001E83D5890068039B /* StoryBoard */,
 				7319E8C81E6A71D60043912A /* CustomUI */,
 				7319E8C91E6A71ED0043912A /* MainUI */,
 				7319E8C71E6A71C60043912A /* Request */,
@@ -246,6 +245,15 @@
 				7342680D1E66D001005E2B06 /* Info.plist */,
 			);
 			path = WeatherTests;
+			sourceTree = "<group>";
+		};
+		73C1ED001E83D5890068039B /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				734267F71E66D001005E2B06 /* Main.storyboard */,
+				73DC15101E811B6F0017D47D /* Home.storyboard */,
+			);
+			name = StoryBoard;
 			sourceTree = "<group>";
 		};
 		9AEFAF8D0F6DE709966513C6 /* Pods */ = {

@@ -10,6 +10,10 @@
 
 @interface WeekForecast : UIView
 
-@property NSArray *weekdayWeather;
+@property NSArray *weekdayAmWeather;
+@property NSArray *weekdayPmWeather;
+
+@property NSArray *weekdayMax;
+@property NSArray *weekdayMin;
 
 @end

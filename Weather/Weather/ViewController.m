@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIView *alphaView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @property NSString *latitude;
 @property NSString *longitude;
 
@@ -56,27 +58,7 @@
     CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
     self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
     
-    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
-    
-    
-    __block ViewController *wself = self;
-    
-    [WECurrentManager requestCurrenttData:data updateDataBlock:^{
-        
-        [WEForecastManager requestForecastData:data updateDataBlock:^{
-            
-            [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
-                
-                [wself mainViewReload];
-                [wself lineChartViewReload];
-                [wself weekDataReload];
-                
-                
-            }];
-            
-        }];
-        
-    }];
+    [self customViewReload];
     
     NSTimeZone *timezone = [NSTimeZone localTimeZone];
     NSLog(@"timezone = %@",timezone);
@@ -100,6 +82,31 @@
         self.alphaView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:alpha];
         
     }
+}
+
+
+- (void)customViewReload {
+    
+    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
+    
+    __block ViewController *wself = self;
+    
+    [WECurrentManager requestCurrenttData:data updateDataBlock:^{
+        
+        [WEForecastManager requestForecastData:data updateDataBlock:^{
+            
+            [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
+                
+                [wself mainViewReload];
+                [wself lineChartViewReload];
+                [wself weekDataReload];
+                
+            }];
+            
+        }];
+        
+    }];
+    
 }
 
 

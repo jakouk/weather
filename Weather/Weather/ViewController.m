@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <AddressBook/AddressBook.h>
 #import "MainWeatherView.h"
 #import "LineChart.h"
 #import "WEForecastManager.h"
@@ -54,6 +55,9 @@
     // Location Manager 시작하기
     [self.locationManager startUpdatingLocation];
     
+    NSLog(@"latitude %lf",self.locationManager.location.coordinate.latitude);
+    NSLog(@"longitude %lf",self.locationManager.location.coordinate.longitude);
+    
     self.latitude = [[NSString alloc] initWithFormat:@"%lf",self.locationManager.location.coordinate.latitude];
     CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
     self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
@@ -62,6 +66,32 @@
     
     NSTimeZone *timezone = [NSTimeZone localTimeZone];
     NSLog(@"timezone = %@",timezone);
+
+
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
+    [self.scrollView addSubview:self.refreshControl];
+    
+    
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        if (error) {
+//            NSLog(@"Failed to reverse-geocode: %@", [error localizedDescription]);
+//            return;
+//        }
+//        
+//        for (CLPlacemark *placemark in placemarks) {
+//            // 큰분류(시 혹은 도) (STATE in U.S.A)
+//            
+//            NSLog(@"locality = %@",placemark.locality);
+//            NSLog(@"postalCode = %@",placemark.postalCode);
+//            NSLog(@"administrativeArea = %@",placemark.administrativeArea);
+//            NSLog(@"country = %@",placemark.country);
+//            
+//        }
+//        
+//        
+//    }];
     
 }
 
@@ -101,6 +131,8 @@
                 [wself lineChartViewReload];
                 [wself weekDataReload];
                 
+                NSLog(@"time");
+                
             }];
             
         }];
@@ -123,9 +155,6 @@
     
     NSDictionary *temperature = minutelyFirstObject[@"temperature"];
     NSDictionary *sky = minutelyFirstObject[@"sky"];
-    NSDictionary *station = minutelyFirstObject[@"station"];
-    
-    NSLog(@"station = %@",station[@"name"]);
     
     NSString *skyMin = sky[@"code"];
     NSString *skyName = sky[@"name"];
@@ -321,6 +350,42 @@
     }
     
     return temperatureArray;
+    
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    // If it's a relatively recent event, turn off updates to save power.
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        
+        
+        NSLog(@"%f,%f",location.coordinate.latitude,location.coordinate.longitude);
+        
+        
+    }
+}
+
+- (void)refershControlAction{
+    
+    for (UIView *subview in [self.scrollView subviews]) {
+        
+        if ( [subview class] == [MainView class] ) {
+            [subview removeFromSuperview];
+            
+        } else if ( [subview class] == [LineChart class] ) {
+            [subview removeFromSuperview];
+            
+        } else if ( [subview class] == [WeekForecast class] ) {
+            [subview removeFromSuperview];
+            
+        }
+    }
+    
+    [self customViewReload];
+    [self.refreshControl endRefreshing];
     
 }
 

@@ -42,6 +42,9 @@
 		73DC150F1E811AF80017D47D /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DC150D1E811AF80017D47D /* MainController.m */; };
 		73DC15111E811B6F0017D47D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73DC15101E811B6F0017D47D /* Home.storyboard */; };
 		73DC15121E811B6F0017D47D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73DC15101E811B6F0017D47D /* Home.storyboard */; };
+		73F2AC201E89059600A6BA8D /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F2AC1F1E89059600A6BA8D /* DataModel.m */; };
+		73F2AC211E89059600A6BA8D /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F2AC1F1E89059600A6BA8D /* DataModel.m */; };
+		73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F2AC231E8930B100A6BA8D /* AddressBook.framework */; };
 		9B14FE754D9A658BABB178F0 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F193AA5FC7F39513FCB375CE /* libPods-Weather.a */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +99,9 @@
 		73DC150C1E811AF80017D47D /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		73DC150D1E811AF80017D47D /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		73DC15101E811B6F0017D47D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		73F2AC1E1E89059600A6BA8D /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		73F2AC1F1E89059600A6BA8D /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		73F2AC231E8930B100A6BA8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		B4817F700115E0C0CFC52296 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */,
 				73A35A0D1E73967E0006FDD9 /* CoreLocation.framework in Frameworks */,
 				7345DAE01E66FD8C0042B51D /* CoreData.framework in Frameworks */,
 				7345DADE1E66FD7F0042B51D /* CoreGraphics.framework in Frameworks */,
@@ -130,6 +137,7 @@
 		47D6C732D04F5465AE148ACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73F2AC231E8930B100A6BA8D /* AddressBook.framework */,
 				73A35A0C1E73967E0006FDD9 /* CoreLocation.framework */,
 				7345DADF1E66FD8C0042B51D /* CoreData.framework */,
 				7345DADD1E66FD7F0042B51D /* CoreGraphics.framework */,
@@ -215,6 +223,7 @@
 				734267F51E66D001005E2B06 /* ViewController.m */,
 				73DC150C1E811AF80017D47D /* MainController.h */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
+				73F2AC221E89059C00A6BA8D /* New Group */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
 				73C1ED001E83D5890068039B /* StoryBoard */,
 				7319E8C81E6A71D60043912A /* CustomUI */,
@@ -254,6 +263,15 @@
 				73DC15101E811B6F0017D47D /* Home.storyboard */,
 			);
 			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		73F2AC221E89059C00A6BA8D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				73F2AC1E1E89059600A6BA8D /* DataModel.h */,
+				73F2AC1F1E89059600A6BA8D /* DataModel.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		9AEFAF8D0F6DE709966513C6 /* Pods */ = {
@@ -323,6 +341,11 @@
 					734267EA1E66D001005E2B06 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					734268061E66D001005E2B06 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -483,6 +506,7 @@
 				73DC150A1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
+				73F2AC201E89059600A6BA8D /* DataModel.m in Sources */,
 				7319E8D11E6A7EA80043912A /* WEForecastManager.m in Sources */,
 				73DC150E1E811AF80017D47D /* MainController.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
@@ -502,6 +526,7 @@
 				7339813A1E6D9D6100484BBD /* MainView.m in Sources */,
 				7339813E1E6EA0E700484BBD /* WECurrentManager.m in Sources */,
 				73DC150F1E811AF80017D47D /* MainController.m in Sources */,
+				73F2AC211E89059600A6BA8D /* DataModel.m in Sources */,
 				73DC150B1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

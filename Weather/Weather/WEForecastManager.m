@@ -28,6 +28,9 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [DataSingleTon sharedDataSingleTon].forecastData = responseObject;
+        
+        NSLog(@"%@",responseObject);
+        
         UpdateDataBlock();
         
         

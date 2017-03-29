@@ -25,7 +25,6 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [DataSingleTon sharedDataSingleTon].weekForcastData = responseObject;
-            
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

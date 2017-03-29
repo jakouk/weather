@@ -91,6 +91,7 @@
 		7345DAE21E66FEAC0042B51D /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
 		7345DB171E6831880042B51D /* MainWeatherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWeatherView.h; sourceTree = "<group>"; };
 		7345DB181E6831880042B51D /* MainWeatherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWeatherView.m; sourceTree = "<group>"; };
+		736061D21E8BA01900923031 /* Incheon.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Incheon.gpx; sourceTree = "<group>"; };
 		73A35A0C1E73967E0006FDD9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		73A35A0E1E76B9570006FDD9 /* WeekForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekForecast.h; sourceTree = "<group>"; };
 		73A35A0F1E76B9570006FDD9 /* WeekForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekForecast.m; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 				734267F41E66D001005E2B06 /* ViewController.h */,
 				734267F51E66D001005E2B06 /* ViewController.m */,
 				73DC150C1E811AF80017D47D /* MainController.h */,
+				736061D21E8BA01900923031 /* Incheon.gpx */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
 				73F2AC221E89059C00A6BA8D /* New Group */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,

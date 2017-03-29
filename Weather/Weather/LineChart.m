@@ -92,7 +92,6 @@
     [graphPath stroke];
     
     
-    
     // time Text
     NSDate *today = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

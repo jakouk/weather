@@ -29,9 +29,9 @@
         
         [DataSingleTon sharedDataSingleTon].forecastData = responseObject;
         
-        NSLog(@"%@",responseObject);
-        
         UpdateDataBlock();
+        
+        
         
         
         

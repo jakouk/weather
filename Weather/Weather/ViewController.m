@@ -62,7 +62,7 @@
     CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
     self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
     
-    [self customViewReload];
+    // [self customViewReload];
     
     NSTimeZone *timezone = [NSTimeZone localTimeZone];
     NSLog(@"timezone = %@",timezone);
@@ -71,27 +71,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
     [self.scrollView addSubview:self.refreshControl];
-    
-    
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray *placemarks, NSError *error) {
-//        if (error) {
-//            NSLog(@"Failed to reverse-geocode: %@", [error localizedDescription]);
-//            return;
-//        }
-//        
-//        for (CLPlacemark *placemark in placemarks) {
-//            // 큰분류(시 혹은 도) (STATE in U.S.A)
-//            
-//            NSLog(@"locality = %@",placemark.locality);
-//            NSLog(@"postalCode = %@",placemark.postalCode);
-//            NSLog(@"administrativeArea = %@",placemark.administrativeArea);
-//            NSLog(@"country = %@",placemark.country);
-//            
-//        }
-//        
-//        
-//    }];
     
 }
 
@@ -128,7 +107,13 @@
             [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
                 
                 [wself mainViewReload];
-                [wself lineChartViewReload];
+                
+                NSLog(@"mainViewReload");
+                
+                //  [wself lineChartViewReload];
+                
+                NSLog(@"lineChartViewReload");
+                
                 [wself weekDataReload];
                 
                 NSLog(@"time");
@@ -353,19 +338,29 @@
     
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
-    // If it's a relatively recent event, turn off updates to save power.
-    CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
+    if ( self.latitude != [[NSString alloc] initWithFormat:@"%lf",manager.location.coordinate.latitude]) {
         
+        self.latitude = [[NSString alloc] initWithFormat:@"%lf",self.locationManager.location.coordinate.latitude];
+        CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
+        self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
         
-        NSLog(@"%f,%f",location.coordinate.latitude,location.coordinate.longitude);
+        NSLog(@"latitude = %@",self.latitude);
+        NSLog(@"longitude = %@",self.longitude);
         
+        CLLocation *currentLocation = [locations objectAtIndex:0];
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
         
+        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+           
+            NSLog(@"CLPlacemark = %@",[placemarks lastObject]);
+            
+        }];
+        
+        [self customViewReload];
     }
+    
 }
 
 - (void)refershControlAction{
@@ -384,7 +379,6 @@
         }
     }
     
-    [self customViewReload];
     [self.refreshControl endRefreshing];
     
 }

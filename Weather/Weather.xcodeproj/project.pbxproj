@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F25D1E8CF79300F43026 /* GeoTrans.m */; };
+		7306F25F1E8CF79300F43026 /* GeoTrans.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F25D1E8CF79300F43026 /* GeoTrans.m */; };
+		7306F2621E8CF7B700F43026 /* GeoTransPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F2611E8CF7B700F43026 /* GeoTransPoint.m */; };
+		7306F2631E8CF7B700F43026 /* GeoTransPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F2611E8CF7B700F43026 /* GeoTransPoint.m */; };
+		7306F2661E8D25DA00F43026 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7306F2651E8D25DA00F43026 /* AddressBookUI.framework */; };
 		7319E8C61E6A71B50043912A /* WeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8C51E6A71B50043912A /* WeatherRequest.m */; };
 		7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
@@ -59,6 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7306F25C1E8CF79300F43026 /* GeoTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTrans.h; sourceTree = "<group>"; };
+		7306F25D1E8CF79300F43026 /* GeoTrans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTrans.m; sourceTree = "<group>"; };
+		7306F2601E8CF7B700F43026 /* GeoTransPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTransPoint.h; sourceTree = "<group>"; };
+		7306F2611E8CF7B700F43026 /* GeoTransPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTransPoint.m; sourceTree = "<group>"; };
+		7306F2651E8D25DA00F43026 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7319E8C41E6A71B50043912A /* WeatherRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherRequest.h; sourceTree = "<group>"; };
 		7319E8C51E6A71B50043912A /* WeatherRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherRequest.m; sourceTree = "<group>"; };
 		7319E8CA1E6A75AB0043912A /* DataSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSingleTon.h; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7306F2661E8D25DA00F43026 /* AddressBookUI.framework in Frameworks */,
 				73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */,
 				73A35A0D1E73967E0006FDD9 /* CoreLocation.framework in Frameworks */,
 				7345DAE01E66FD8C0042B51D /* CoreData.framework in Frameworks */,
@@ -138,6 +149,7 @@
 		47D6C732D04F5465AE148ACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7306F2651E8D25DA00F43026 /* AddressBookUI.framework */,
 				73F2AC231E8930B100A6BA8D /* AddressBook.framework */,
 				73A35A0C1E73967E0006FDD9 /* CoreLocation.framework */,
 				7345DADF1E66FD8C0042B51D /* CoreData.framework */,
@@ -146,6 +158,17 @@
 				CE641A7C3E2D2B480724A6B6 /* libPods-WeatherTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7306F2641E8CF7BE00F43026 /* TM Coordinate */ = {
+			isa = PBXGroup;
+			children = (
+				7306F25C1E8CF79300F43026 /* GeoTrans.h */,
+				7306F25D1E8CF79300F43026 /* GeoTrans.m */,
+				7306F2601E8CF7B700F43026 /* GeoTransPoint.h */,
+				7306F2611E8CF7B700F43026 /* GeoTransPoint.m */,
+			);
+			name = "TM Coordinate";
 			sourceTree = "<group>";
 		};
 		7319E8C71E6A71C60043912A /* Request */ = {
@@ -225,7 +248,8 @@
 				73DC150C1E811AF80017D47D /* MainController.h */,
 				736061D21E8BA01900923031 /* Incheon.gpx */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
-				73F2AC221E89059C00A6BA8D /* New Group */,
+				7306F2641E8CF7BE00F43026 /* TM Coordinate */,
+				73F2AC221E89059C00A6BA8D /* DataModel */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
 				73C1ED001E83D5890068039B /* StoryBoard */,
 				7319E8C81E6A71D60043912A /* CustomUI */,
@@ -267,13 +291,13 @@
 			name = StoryBoard;
 			sourceTree = "<group>";
 		};
-		73F2AC221E89059C00A6BA8D /* New Group */ = {
+		73F2AC221E89059C00A6BA8D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
 				73F2AC1E1E89059600A6BA8D /* DataModel.h */,
 				73F2AC1F1E89059600A6BA8D /* DataModel.m */,
 			);
-			name = "New Group";
+			name = DataModel;
 			sourceTree = "<group>";
 		};
 		9AEFAF8D0F6DE709966513C6 /* Pods */ = {
@@ -498,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A35A101E76B9570006FDD9 /* WeekForecast.m in Sources */,
+				7306F2621E8CF7B700F43026 /* GeoTransPoint.m in Sources */,
 				734267FC1E66D001005E2B06 /* Weather.xcdatamodeld in Sources */,
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
 				7319E8C61E6A71B50043912A /* WeatherRequest.m in Sources */,
@@ -505,6 +530,7 @@
 				7339813D1E6EA0E700484BBD /* WECurrentManager.m in Sources */,
 				734267F31E66D001005E2B06 /* AppDelegate.m in Sources */,
 				733981391E6D9D6100484BBD /* MainView.m in Sources */,
+				7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */,
 				73DC150A1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
@@ -523,6 +549,8 @@
 				7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7319E8D21E6A7EA80043912A /* WEForecastManager.m in Sources */,
 				7345DB1A1E6831880042B51D /* MainWeatherView.m in Sources */,
+				7306F25F1E8CF79300F43026 /* GeoTrans.m in Sources */,
+				7306F2631E8CF7B700F43026 /* GeoTransPoint.m in Sources */,
 				73A35A111E76B9570006FDD9 /* WeekForecast.m in Sources */,
 				7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */,
 				7339813A1E6D9D6100484BBD /* MainView.m in Sources */,

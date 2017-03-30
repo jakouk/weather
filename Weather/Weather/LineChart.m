@@ -42,7 +42,6 @@
     self.width = rect.size.width;
     self.height = rect.size.height;
     
-    
     NSString *uiViewName = @"예보";
     [uiViewName drawAtPoint:CGPointMake(20, 0) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:25.0],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
@@ -102,7 +101,7 @@
     NSString *hourApm = hourList[1];
     
     NSArray *apmList = [hourApm componentsSeparatedByString:@" "];
-    NSString *apmString = apmList[1];
+    NSString *apmString = apmList[0];
     
     NSInteger hour = [hourString integerValue];
     NSInteger nowHour = hour;

@@ -62,11 +62,8 @@
     CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
     self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
     
-    // [self customViewReload];
-    
     NSTimeZone *timezone = [NSTimeZone localTimeZone];
     NSLog(@"timezone = %@",timezone);
-
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
@@ -107,23 +104,12 @@
             [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
                 
                 [wself mainViewReload];
-                
-                NSLog(@"mainViewReload");
-                
-                //  [wself lineChartViewReload];
-                
-                NSLog(@"lineChartViewReload");
-                
+                [wself lineChartViewReload];
                 [wself weekDataReload];
                 
-                NSLog(@"time");
-                
             }];
-            
         }];
-        
     }];
-    
 }
 
 
@@ -343,18 +329,26 @@
     if ( self.latitude != [[NSString alloc] initWithFormat:@"%lf",manager.location.coordinate.latitude]) {
         
         self.latitude = [[NSString alloc] initWithFormat:@"%lf",self.locationManager.location.coordinate.latitude];
-        CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
+        CGFloat longitude = self.locationManager.location.coordinate.longitude;
         self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
         
         NSLog(@"latitude = %@",self.latitude);
         NSLog(@"longitude = %@",self.longitude);
+        NSLog(@"locations = %@",locations);
         
         CLLocation *currentLocation = [locations objectAtIndex:0];
+        [manager stopUpdatingLocation];
+        
+        NSLog(@"currentLocation = %@",currentLocation);
+        
         CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
         
         [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
            
-            NSLog(@"CLPlacemark = %@",[placemarks lastObject]);
+            CLPlacemark *placemark = placemarks[0];
+            NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
+            NSString *addressString = [lines componentsJoinedByString:@"\n"];
+            NSLog(@"Address: %@", addressString);
             
         }];
         
@@ -380,7 +374,7 @@
     }
     
     [self.refreshControl endRefreshing];
-    
+    [self customViewReload];
 }
 
 

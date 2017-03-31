@@ -16,6 +16,7 @@
 #import "WEWeekRequest.h"
 #import "MainView.h"
 #import "WeekForecast.h"
+#import "WETMManager.h"
 
 @interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
@@ -55,9 +56,6 @@
     // Location Manager 시작하기
     [self.locationManager startUpdatingLocation];
     
-    NSLog(@"latitude %lf",self.locationManager.location.coordinate.latitude);
-    NSLog(@"longitude %lf",self.locationManager.location.coordinate.longitude);
-    
     self.latitude = [[NSString alloc] initWithFormat:@"%lf",self.locationManager.location.coordinate.latitude];
     CGFloat longitude = (-1) * self.locationManager.location.coordinate.longitude;
     self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
@@ -95,7 +93,13 @@
     
     NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
     
+    NSDictionary *wgs84Data = @{@"y":self.latitude,@"x":self.longitude};
+    
     __block ViewController *wself = self;
+    
+    [WETMManager requestWeekForcastData:wgs84Data updateDataBlock:^{
+        
+    }];
     
     [WECurrentManager requestCurrenttData:data updateDataBlock:^{
         
@@ -333,8 +337,7 @@
         self.longitude = [[NSString alloc] initWithFormat:@"%lf",longitude];
         
         NSLog(@"latitude = %@",self.latitude);
-        NSLog(@"longitude = %@",self.longitude);
-        NSLog(@"locations = %@",locations);
+        NSLog(@"longitude = %@",self.longitude);\
         
         CLLocation *currentLocation = [locations objectAtIndex:0];
         [manager stopUpdatingLocation];
@@ -346,13 +349,14 @@
         [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
            
             CLPlacemark *placemark = placemarks[0];
-            NSArray *lines = placemark.addressDictionary[ @"FormattedAddressLines"];
-            NSString *addressString = [lines componentsJoinedByString:@"\n"];
-            NSLog(@"Address: %@", addressString);
+            NSLog(@"Address locality: %@",placemark.locality);
+            NSLog(@"Address administrativeArea: %@",placemark.administrativeArea);
+            
+            [self customViewReload];
             
         }];
         
-        [self customViewReload];
+        
     }
     
 }

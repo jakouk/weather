@@ -1,38 +1,40 @@
 //
-//  WEWeekRequest.m
+//  WETMManager.m
 //  Weather
 //
-//  Created by jakouk on 2017. 3. 21..
+//  Created by jakouk on 2017. 3. 31..
 //  Copyright © 2017년 jakouk. All rights reserved.
 //
 
-#import "WEWeekRequest.h"
+#import "WETMManager.h"
 
-@implementation WEWeekRequest
+@implementation WETMManager
 
 + (void)requestWeekForcastData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
-    NSString *URLString = [self requestURL:RequestTypeWeekForecast];
+    NSString *URLString = [self requestURL:RequestTypeTM];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self addAppkey:manager];
+    NSString *URLApiString = [self addApiKey:URLString];
     
-    [manager GET:URLString parameters:param
+    
+    [manager GET:URLApiString parameters:param
         progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            [DataSingleTon sharedDataSingleTon].weekForcastData = responseObject;
+            NSLog(@"responseObject = %@",responseObject);
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            NSLog(@"6일 예보 실패");
+            
+            NSLog(@"%@",error);
+            NSLog(@"TM 위치 데이터 실패 ");
             
         }];
-    
     
 }
 

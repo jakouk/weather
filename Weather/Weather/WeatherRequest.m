@@ -11,7 +11,6 @@
 
 @implementation WeatherRequest
 
-
 // make URL
 + (NSString *)requestURL:(RequestType)type {
     
@@ -24,8 +23,14 @@
         case RequestTypeCurrent:
             [URLString appendFormat:@"/current/minutely?version=1"];
             break;
-        case RequestTypeWeekForcast:
+        case RequestTypeWeekForecast:
             [URLString appendString:@"/forecast/6days?version=1"];
+            break;
+        case RequestTypeDust:
+            URLString = [dustBaseURL mutableCopy];
+            break;
+        case RequestTypeTM:
+            URLString = [WGS84ToTMURL mutableCopy];
             break;
     }
     
@@ -38,5 +43,15 @@
     
     [httpSessionManager.requestSerializer setValue:@"02590c0c-97a5-3b0e-9f7c-34a2f1a0715a" forHTTPHeaderField:@"appkey"];
 }
+
++ (NSString *)addApiKey:(NSString *)wgs84URL{
+    
+    NSString *apiKey = @"";
+    NSString *wgsToTMString = [[NSString alloc] initWithFormat:@"%@&%@",wgs84URL,apiKey];
+    
+    return wgsToTMString;
+    
+}
+
 
 @end

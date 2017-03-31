@@ -16,5 +16,6 @@
 @property NSDictionary *currentData;
 @property NSDictionary *weekForcastData;
 
+@property NSDictionary *TMData;
 
 @end

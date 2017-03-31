@@ -173,7 +173,7 @@
 
 -(double)asinz:(double) value {
     
-    if (abs(value) > 1.0) value = (value > 0 ? 1: -1);
+    if (fabs(value) > 1.0) value = (value > 0 ? 1: -1);
     
     return asin(value);
     
@@ -229,7 +229,7 @@
         
         double b = cos_phi * sin(delta_lon);
         
-        if ((abs(abs(b) - 1.0)) < EPSLN) {
+        if ((fabs(fabs(b) - 1.0)) < EPSLN) {
             
             //Log.d("무한대 에러");
             //System.out.println("무한대 에러");
@@ -316,7 +316,7 @@
         
         phi = phi + delta_Phi;
         
-        if (abs(delta_Phi) <= EPSLN) break;
+        if (fabs(delta_Phi) <= EPSLN) break;
         
         if (i >= max_iter) {
             
@@ -330,7 +330,7 @@
         i++;
     }
     
-    if (abs(phi) < (M_PI / 2)) {
+    if (fabs(phi) < (M_PI / 2)) {
         
         double sin_phi = sin(phi);
         double cos_phi = cos(phi);

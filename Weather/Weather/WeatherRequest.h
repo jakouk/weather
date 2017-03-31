@@ -13,10 +13,16 @@
 typedef NS_ENUM(NSInteger, RequestType) {
     RequestTypeForecast,
     RequestTypeCurrent,
-    RequestTypeWeekForcast
+    RequestTypeWeekForecast,
+    RequestTypeDust,
+    RequestTypeTM
 };
 
 static NSString *baseURL = @"http://apis.skplanetx.com/weather";
+
+static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
+
+static NSString *WGS84ToTMURL = @"https://apis.daum.net/local/geo/transcoord?&fromCoord=WGS84&toCoord=TM&output=json";
 
 @interface WeatherRequest : NSObject
 
@@ -45,4 +51,15 @@ typedef void(^UpdateDataBlock)(void);
  ***/
 + (void)addAppkey:(AFHTTPSessionManager *)httpSessionManager;
 
+
+/***
+ 
+ URLString에 ApiKey를 추가해 주는 메서드
+ 
+ @author jakoriaty
+ @version 1.00
+ @param wgs84URL ApiKey를 추가할 URL
+ 
+ ***/
++ (NSString *)addApiKey:(NSString *)wgs84URL;
 @end

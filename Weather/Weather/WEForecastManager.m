@@ -15,8 +15,6 @@
     
     NSString *URLString = [self requestURL:RequestTypeForecast];
     
-    
-    
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];

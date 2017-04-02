@@ -17,5 +17,7 @@
 @property NSDictionary *weekForcastData;
 
 @property NSDictionary *TMData;
+@property NSString *mesureStation;
+@property NSDictionary *dustData;
 
 @end

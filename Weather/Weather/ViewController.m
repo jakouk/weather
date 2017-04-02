@@ -17,6 +17,8 @@
 #import "MainView.h"
 #import "WeekForecast.h"
 #import "WETMManager.h"
+#import "WEMeasuringStationManager.h"
+#import "WEDustManager.h"
 
 @interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
@@ -98,6 +100,23 @@
     __block ViewController *wself = self;
     
     [WETMManager requestWeekForcastData:wgs84Data updateDataBlock:^{
+        
+        NSDictionary *TMData = [DataSingleTon sharedDataSingleTon].TMData;
+        NSDictionary *TMCoordinateData = @{@"tmX":TMData[@"x"],@"tmY":TMData[@"y"]};
+        
+        [WEMeasuringStationManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
+           
+            
+            NSDictionary *stationData = @{@"stationName":[DataSingleTon sharedDataSingleTon].mesureStation};
+            
+            [WEDustManager requestDustData:stationData updateDataBlock:^{
+                
+                
+                
+            }];
+            
+            
+        }];
         
     }];
     

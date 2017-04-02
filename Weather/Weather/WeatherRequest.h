@@ -15,14 +15,17 @@ typedef NS_ENUM(NSInteger, RequestType) {
     RequestTypeCurrent,
     RequestTypeWeekForecast,
     RequestTypeDust,
-    RequestTypeTM
+    RequestTypeTM,
+    RequestTypeMeasure
 };
 
 static NSString *baseURL = @"http://apis.skplanetx.com/weather";
 
-static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
-
 static NSString *WGS84ToTMURL = @"https://apis.daum.net/local/geo/transcoord?&fromCoord=WGS84&toCoord=TM&output=json";
+
+static NSString *measureStationURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?pageNo=1&numOfRows=10";
+
+static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?dataTerm=month&pageNo=1&numOfRows=10&ver=1.3";
 
 @interface WeatherRequest : NSObject
 
@@ -62,4 +65,30 @@ typedef void(^UpdateDataBlock)(void);
  
  ***/
 + (NSString *)addApiKey:(NSString *)wgs84URL;
+
+
+/***
+ 
+ URLString에 ServiceKey를 추가해 주는 메서드
+ 
+ @author jakoriaty
+ @version 1.00
+ @param measuringStationURL ApiKey를 추가할 URL
+ 
+ ***/
++ (NSString *)addServiceKey:(NSString *)measuringStationURL;
+
+/***
+ 
+ URLString에 Parameter를 추가해서 NSURL을 리턴해주는 메서드
+ 
+ @author jakoriaty
+ @version 1.00
+ @param URLString NSURL로 변환할 URLString
+ @param param NSURL로 변환하기전 URLString에 추가할 파라미터
+ 
+ ***/
++ (NSURL *)URLStringToURL:(NSString *)URLString parameter:(NSDictionary *)param;
+
+
 @end

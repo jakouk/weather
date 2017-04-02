@@ -19,13 +19,12 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSString *URLApiString = [self addApiKey:URLString];
     
-    
     [manager GET:URLApiString parameters:param
         progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            NSLog(@"responseObject = %@",responseObject);
+            [DataSingleTon sharedDataSingleTon].TMData = responseObject;
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

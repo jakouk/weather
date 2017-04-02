@@ -10,4 +10,6 @@
 
 @interface WEMeasuringStationManager : WeatherRequest
 
++ (void)requestMeasureStationData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock;
+
 @end

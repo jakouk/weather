@@ -20,24 +20,38 @@
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
+    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
-    NSLog(@"URL = %@",url);
+    NSLog(@"URL = %@\n\n",[url absoluteString]);
     
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if ( !error ) {
             
             // success
+//            NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+//            
+//            NSArray *firstStationArray = [fetchedXML componentsSeparatedByString:@"</stationName>"];
+//            NSString *item = firstStationArray[0];
+//            NSArray *stationArray = [item componentsSeparatedByString:@"<stationName>"];
+//            
+//            NSLog(@"stationArray Address = %@\n\n",stationArray);
+//            NSString *station = stationArray[1];
+            
             NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
             
-            NSArray *firstStationArray = [fetchedXML componentsSeparatedByString:@"</stationName>"];
-            NSString *item = firstStationArray[0];
-            NSArray *stationArray = [item componentsSeparatedByString:@"<stationName>"];
-            NSString *station = stationArray[1];
+            NSData *jsonData = [fetchedXML dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *e;
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
             
-            [DataSingleTon sharedDataSingleTon].mesureStation = station;
-             UpdateDataBlock();
+            NSLog(@"NSDictionary = %@",dict);
+            
+            //
+            
+            //NSLog(@"WEMeasuringStationManager.data = %@",fetchedXML);
+            
+            //[DataSingleTon sharedDataSingleTon].mesureStation = station;
+             //UpdateDataBlock();
             
         } else {
             
@@ -51,5 +65,6 @@
     [task resume];
     
 }
+
 
 @end

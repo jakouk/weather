@@ -63,7 +63,7 @@
     return measuringStatingURLString;
 }
 
-+ (NSURL *)URLStringToURL:(NSString *)URLString parameter:(NSDictionary *)param; {
++ (NSURL *)URLStringToURL:(NSString *)URLString parameter:(NSDictionary *)param {
     
     NSMutableString *mutableURLString = [[NSMutableString alloc] initWithString:URLString];
     
@@ -74,8 +74,6 @@
     }
     
     NSURL *URL = [[NSURL alloc] initWithString:mutableURLString];
-    
-    NSLog(@"WeatherRequest URL = %@\n\n", [URL absoluteString]);
     
     return URL;
 }

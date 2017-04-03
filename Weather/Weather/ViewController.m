@@ -106,13 +106,12 @@
         
         [WEMeasuringStationManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
            
-            
-            NSDictionary *stationData = @{@"stationName":[DataSingleTon sharedDataSingleTon].mesureStation};
+            NSString *mesureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
+            NSDictionary *stationData = @{@"stationName":[mesureStaion stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
             
             [WEDustManager requestDustData:stationData updateDataBlock:^{
                 
-                
-                
+
             }];
             
             

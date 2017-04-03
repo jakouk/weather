@@ -24,10 +24,9 @@
 		7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		7319E8D11E6A7EA80043912A /* WEForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8D01E6A7EA80043912A /* WEForecastManager.m */; };
 		7319E8D21E6A7EA80043912A /* WEForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8D01E6A7EA80043912A /* WEForecastManager.m */; };
-		731A63701E911B110013C40B /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A636A1E911B110013C40B /* TBXML.m */; };
-		731A63711E911B110013C40B /* TBXML+Compression.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A636B1E911B110013C40B /* TBXML+Compression.m */; };
-		731A63721E911B110013C40B /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A636C1E911B110013C40B /* TBXML+HTTP.m */; };
 		731A63751E911BCF0013C40B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 731A63741E911BCF0013C40B /* libz.tbd */; };
+		731A63781E9258A80013C40B /* rssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A63771E9258A80013C40B /* rssParser.m */; };
+		731A63791E9258A80013C40B /* rssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A63771E9258A80013C40B /* rssParser.m */; };
 		733981391E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		7339813A1E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		7339813D1E6EA0E700484BBD /* WECurrentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7339813C1E6EA0E700484BBD /* WECurrentManager.m */; };
@@ -95,13 +94,9 @@
 		7319E8D31E6A90850043912A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		731A63651E8FAA500013C40B /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		731A63671E8FAAAB0013C40B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		731A636A1E911B110013C40B /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "../../../../Downloads/TBXML-master/TBXML-Code/TBXML.m"; sourceTree = "<group>"; };
-		731A636B1E911B110013C40B /* TBXML+Compression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TBXML+Compression.m"; path = "../../../../Downloads/TBXML-master/TBXML-Code/TBXML+Compression.m"; sourceTree = "<group>"; };
-		731A636C1E911B110013C40B /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TBXML+HTTP.m"; path = "../../../../Downloads/TBXML-master/TBXML-Code/TBXML+HTTP.m"; sourceTree = "<group>"; };
-		731A636D1E911B110013C40B /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "../../../../Downloads/TBXML-master/TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
-		731A636E1E911B110013C40B /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TBXML+Compression.h"; path = "../../../../Downloads/TBXML-master/TBXML-Headers/TBXML+Compression.h"; sourceTree = "<group>"; };
-		731A636F1E911B110013C40B /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TBXML+HTTP.h"; path = "../../../../Downloads/TBXML-master/TBXML-Headers/TBXML+HTTP.h"; sourceTree = "<group>"; };
 		731A63741E911BCF0013C40B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		731A63761E9258A80013C40B /* rssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rssParser.h; sourceTree = "<group>"; };
+		731A63771E9258A80013C40B /* rssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rssParser.m; sourceTree = "<group>"; };
 		733981371E6D9D6100484BBD /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		733981381E6D9D6100484BBD /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		7339813B1E6EA0E700484BBD /* WECurrentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECurrentManager.h; sourceTree = "<group>"; };
@@ -252,17 +247,13 @@
 			name = DataSingleTon;
 			sourceTree = "<group>";
 		};
-		731A63731E911B160013C40B /* TBXML */ = {
+		731A637A1E9258B00013C40B /* XMLParser */ = {
 			isa = PBXGroup;
 			children = (
-				731A636D1E911B110013C40B /* TBXML.h */,
-				731A636A1E911B110013C40B /* TBXML.m */,
-				731A636E1E911B110013C40B /* TBXML+Compression.h */,
-				731A636B1E911B110013C40B /* TBXML+Compression.m */,
-				731A636F1E911B110013C40B /* TBXML+HTTP.h */,
-				731A636C1E911B110013C40B /* TBXML+HTTP.m */,
+				731A63761E9258A80013C40B /* rssParser.h */,
+				731A63771E9258A80013C40B /* rssParser.m */,
 			);
-			name = TBXML;
+			name = XMLParser;
 			sourceTree = "<group>";
 		};
 		734267E21E66D001005E2B06 = {
@@ -295,7 +286,7 @@
 				73DC150C1E811AF80017D47D /* MainController.h */,
 				736061D21E8BA01900923031 /* Incheon.gpx */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
-				731A63731E911B160013C40B /* TBXML */,
+				731A637A1E9258B00013C40B /* XMLParser */,
 				7306F2641E8CF7BE00F43026 /* TM Coordinate */,
 				73F2AC221E89059C00A6BA8D /* DataModel */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
@@ -573,10 +564,8 @@
 				7306F2621E8CF7B700F43026 /* GeoTransPoint.m in Sources */,
 				7313BC8B1E8E799200B36B92 /* WEMeasuringStationManager.m in Sources */,
 				734267FC1E66D001005E2B06 /* Weather.xcdatamodeld in Sources */,
-				731A63711E911B110013C40B /* TBXML+Compression.m in Sources */,
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
 				7313BC871E8E6E8B00B36B92 /* WETMManager.m in Sources */,
-				731A63701E911B110013C40B /* TBXML.m in Sources */,
 				7319E8C61E6A71B50043912A /* WeatherRequest.m in Sources */,
 				7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */,
 				7339813D1E6EA0E700484BBD /* WECurrentManager.m in Sources */,
@@ -585,11 +574,11 @@
 				7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */,
 				73DC150A1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 				7313BC8F1E8E7B8C00B36B92 /* WEDustManager.m in Sources */,
-				731A63721E911B110013C40B /* TBXML+HTTP.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
 				7319E8D11E6A7EA80043912A /* WEForecastManager.m in Sources */,
 				73DC150E1E811AF80017D47D /* MainController.m in Sources */,
+				731A63781E9258A80013C40B /* rssParser.m in Sources */,
 				7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
 			);
@@ -610,6 +599,7 @@
 				7313BC881E8E6E8B00B36B92 /* WETMManager.m in Sources */,
 				7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */,
 				7339813A1E6D9D6100484BBD /* MainView.m in Sources */,
+				731A63791E9258A80013C40B /* rssParser.m in Sources */,
 				7339813E1E6EA0E700484BBD /* WECurrentManager.m in Sources */,
 				73DC150F1E811AF80017D47D /* MainController.m in Sources */,
 				7313BC901E8E7B8C00B36B92 /* WEDustManager.m in Sources */,

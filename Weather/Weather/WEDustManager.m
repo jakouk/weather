@@ -17,7 +17,7 @@
     
     NSLog(@"DustManager URLString = %@\n\n",URLServiceString);
     
-    NSURL *url = [super URLStringToURL:URLServiceString parameter:param];
+    NSURL *url = [self URLStringToURL:URLServiceString parameter:param];
     
     NSLog(@"Dust Manager url = %@\n\n",url.absoluteString);
     

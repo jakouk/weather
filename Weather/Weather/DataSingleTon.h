@@ -12,12 +12,14 @@
 
 + (instancetype)sharedDataSingleTon;
 
+// Weather Forecast Data
 @property NSDictionary *forecastData;
 @property NSDictionary *currentData;
 @property NSDictionary *weekForcastData;
 
+// DustData
 @property NSDictionary *TMData;
-@property NSString *mesureStation;
+@property NSDictionary *mesureStation;
 @property NSDictionary *dustData;
 
 @end

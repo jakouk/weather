@@ -28,12 +28,14 @@
             break;
         case RequestTypeDust:
             URLString = [dustBaseURL mutableCopy];
+            [URLString appendString:@"ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?dataTerm=month&pageNo=1&numOfRows=10&ver=1.3&_returnType=json"];
             break;
         case RequestTypeTM:
             URLString = [WGS84ToTMURL mutableCopy];
             break;
         case RequestTypeMeasure:
-            URLString = [measureStationURL mutableCopy];
+            URLString = [dustBaseURL mutableCopy];
+            [URLString appendString:@"MsrstnInfoInqireSvc/getNearbyMsrstnList?pageNo=1&numOfRows=10&_returnType=json"];
             break;
     }
     

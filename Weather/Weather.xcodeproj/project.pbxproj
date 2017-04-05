@@ -25,8 +25,6 @@
 		7319E8D11E6A7EA80043912A /* WEForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8D01E6A7EA80043912A /* WEForecastManager.m */; };
 		7319E8D21E6A7EA80043912A /* WEForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8D01E6A7EA80043912A /* WEForecastManager.m */; };
 		731A63751E911BCF0013C40B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 731A63741E911BCF0013C40B /* libz.tbd */; };
-		731A63781E9258A80013C40B /* rssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A63771E9258A80013C40B /* rssParser.m */; };
-		731A63791E9258A80013C40B /* rssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 731A63771E9258A80013C40B /* rssParser.m */; };
 		733981391E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		7339813A1E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		7339813D1E6EA0E700484BBD /* WECurrentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7339813C1E6EA0E700484BBD /* WECurrentManager.m */; };
@@ -57,6 +55,8 @@
 		73DC150F1E811AF80017D47D /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DC150D1E811AF80017D47D /* MainController.m */; };
 		73DC15111E811B6F0017D47D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73DC15101E811B6F0017D47D /* Home.storyboard */; };
 		73DC15121E811B6F0017D47D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73DC15101E811B6F0017D47D /* Home.storyboard */; };
+		73E42AE81E93830800F6ACA9 /* DustView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AE71E93830800F6ACA9 /* DustView.m */; };
+		73E42AE91E93830800F6ACA9 /* DustView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AE71E93830800F6ACA9 /* DustView.m */; };
 		73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F2AC231E8930B100A6BA8D /* AddressBook.framework */; };
 		9B14FE754D9A658BABB178F0 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F193AA5FC7F39513FCB375CE /* libPods-Weather.a */; };
 /* End PBXBuildFile section */
@@ -95,8 +95,6 @@
 		731A63651E8FAA500013C40B /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		731A63671E8FAAAB0013C40B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		731A63741E911BCF0013C40B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		731A63761E9258A80013C40B /* rssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rssParser.h; sourceTree = "<group>"; };
-		731A63771E9258A80013C40B /* rssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rssParser.m; sourceTree = "<group>"; };
 		733981371E6D9D6100484BBD /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		733981381E6D9D6100484BBD /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		7339813B1E6EA0E700484BBD /* WECurrentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECurrentManager.h; sourceTree = "<group>"; };
@@ -131,6 +129,8 @@
 		73DC150C1E811AF80017D47D /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		73DC150D1E811AF80017D47D /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		73DC15101E811B6F0017D47D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		73E42AE61E93830800F6ACA9 /* DustView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DustView.h; sourceTree = "<group>"; };
+		73E42AE71E93830800F6ACA9 /* DustView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DustView.m; sourceTree = "<group>"; };
 		73F2AC231E8930B100A6BA8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +224,8 @@
 				733981381E6D9D6100484BBD /* MainView.m */,
 				73A35A0E1E76B9570006FDD9 /* WeekForecast.h */,
 				73A35A0F1E76B9570006FDD9 /* WeekForecast.m */,
+				73E42AE61E93830800F6ACA9 /* DustView.h */,
+				73E42AE71E93830800F6ACA9 /* DustView.m */,
 			);
 			name = CustomUI;
 			sourceTree = "<group>";
@@ -245,15 +247,6 @@
 				7319E8CB1E6A75AB0043912A /* DataSingleTon.m */,
 			);
 			name = DataSingleTon;
-			sourceTree = "<group>";
-		};
-		731A637A1E9258B00013C40B /* XMLParser */ = {
-			isa = PBXGroup;
-			children = (
-				731A63761E9258A80013C40B /* rssParser.h */,
-				731A63771E9258A80013C40B /* rssParser.m */,
-			);
-			name = XMLParser;
 			sourceTree = "<group>";
 		};
 		734267E21E66D001005E2B06 = {
@@ -286,7 +279,6 @@
 				73DC150C1E811AF80017D47D /* MainController.h */,
 				736061D21E8BA01900923031 /* Incheon.gpx */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
-				731A637A1E9258B00013C40B /* XMLParser */,
 				7306F2641E8CF7BE00F43026 /* TM Coordinate */,
 				73F2AC221E89059C00A6BA8D /* DataModel */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
@@ -574,11 +566,11 @@
 				7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */,
 				73DC150A1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 				7313BC8F1E8E7B8C00B36B92 /* WEDustManager.m in Sources */,
+				73E42AE81E93830800F6ACA9 /* DustView.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
 				7319E8D11E6A7EA80043912A /* WEForecastManager.m in Sources */,
 				73DC150E1E811AF80017D47D /* MainController.m in Sources */,
-				731A63781E9258A80013C40B /* rssParser.m in Sources */,
 				7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
 			);
@@ -599,9 +591,9 @@
 				7313BC881E8E6E8B00B36B92 /* WETMManager.m in Sources */,
 				7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */,
 				7339813A1E6D9D6100484BBD /* MainView.m in Sources */,
-				731A63791E9258A80013C40B /* rssParser.m in Sources */,
 				7339813E1E6EA0E700484BBD /* WECurrentManager.m in Sources */,
 				73DC150F1E811AF80017D47D /* MainController.m in Sources */,
+				73E42AE91E93830800F6ACA9 /* DustView.m in Sources */,
 				7313BC901E8E7B8C00B36B92 /* WEDustManager.m in Sources */,
 				73DC150B1E80EB720017D47D /* WEWeekRequest.m in Sources */,
 			);

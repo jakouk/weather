@@ -23,9 +23,7 @@ static NSString *baseURL = @"http://apis.skplanetx.com/weather";
 
 static NSString *WGS84ToTMURL = @"https://apis.daum.net/local/geo/transcoord?&fromCoord=WGS84&toCoord=TM&output=json";
 
-static NSString *measureStationURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?pageNo=1&numOfRows=10&_returnType=json";
-
-static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?dataTerm=month&pageNo=1&numOfRows=10&ver=1.3&_returnType=json";
+static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/";
 
 @interface WeatherRequest : NSObject
 

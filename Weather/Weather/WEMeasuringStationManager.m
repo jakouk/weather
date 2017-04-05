@@ -22,36 +22,20 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
-    NSLog(@"URL = %@\n\n",[url absoluteString]);
-    
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if ( !error ) {
             
             // success
-//            NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
-//            
-//            NSArray *firstStationArray = [fetchedXML componentsSeparatedByString:@"</stationName>"];
-//            NSString *item = firstStationArray[0];
-//            NSArray *stationArray = [item componentsSeparatedByString:@"<stationName>"];
-//            
-//            NSLog(@"stationArray Address = %@\n\n",stationArray);
-//            NSString *station = stationArray[1];
+            NSString *htmltoNSString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
             
-            NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
-            
-            NSData *jsonData = [fetchedXML dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *jsonData = [htmltoNSString dataUsingEncoding:NSUTF8StringEncoding];
             NSError *e;
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+            NSDictionary *mesureStationDic = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
             
-            NSLog(@"NSDictionary = %@",dict);
             
-            //
-            
-            //NSLog(@"WEMeasuringStationManager.data = %@",fetchedXML);
-            
-            //[DataSingleTon sharedDataSingleTon].mesureStation = station;
-             //UpdateDataBlock();
+            [DataSingleTon sharedDataSingleTon].mesureStation = mesureStationDic;
+             UpdateDataBlock();
             
         } else {
             

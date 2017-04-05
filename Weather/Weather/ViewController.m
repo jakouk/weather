@@ -15,6 +15,7 @@
 #import "WECurrentManager.h"
 #import "WEWeekRequest.h"
 #import "MainView.h"
+#import "DustView.h"
 #import "WeekForecast.h"
 #import "WETMManager.h"
 #import "WEMeasuringStationManager.h"
@@ -106,10 +107,15 @@
         
         [WEMeasuringStationManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
            
-            NSString *mesureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
-            NSDictionary *stationData = @{@"stationName":[mesureStaion stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
+            NSDictionary *measureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
+            NSArray *measureStationArray = measureStaion[@"list"];
+            NSDictionary *measureDictionary = measureStationArray[0];
+            NSString *measureStationString = measureDictionary[@"stationName"];
+            NSDictionary *stationData = @{@"stationName":[measureStationString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
             
             [WEDustManager requestDustData:stationData updateDataBlock:^{
+                
+                [wself dustViewReload];
                 
 
             }];
@@ -210,7 +216,6 @@
     LineChart * name = [[LineChart alloc] init];
     name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width, self.scrollView.frame.size.height/2.5 );
     name.graphPoints = temperatureArray;
-    // [name setNeedsDisplay];
     
     [name performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:0 waitUntilDone:NO];
     [self.scrollView addSubview:name];
@@ -221,7 +226,6 @@
     
     WeekForecast *weekForcast = [[WeekForecast alloc] init];
     weekForcast.frame = CGRectMake(0, self.scrollView.frame.size.height +20 + self.scrollView.frame.size.height / 2.5 + 10, self.scrollView.frame.size.width, (self.scrollView.frame.size.height / 3) * 2 );
-    
     
     NSDictionary *weekForcastData = [DataSingleTon sharedDataSingleTon].weekForcastData;
     NSDictionary *weather = weekForcastData[@"weather"];
@@ -298,6 +302,21 @@
     [weekForcast setNeedsDisplay];
     [self.scrollView addSubview:weekForcast];
     
+}
+
+- (void)dustViewReload {
+    
+    DustView *dustView = [[DustView alloc] init];
+    
+    dustView.frame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height/3 *2);
+    
+    NSDictionary *dustDictionary = [DataSingleTon sharedDataSingleTon].dustData;
+    NSArray *dustTimeArray = dustDictionary[@"list"];
+    NSDictionary *dustFirstData = dustTimeArray[0];
+    dustView.dustDataDictionary = dustFirstData;
+    
+    [dustView setNeedsDisplay];
+    [self.scrollView addSubview:dustView];
 }
 
 - (NSArray *)temperateDataReturn:(NSString *)apiKey {
@@ -392,6 +411,8 @@
         } else if ( [subview class] == [WeekForecast class] ) {
             [subview removeFromSuperview];
             
+        } else if ( [subview class] == [DustView class] ) {
+            [subview removeFromSuperview];
         }
     }
     

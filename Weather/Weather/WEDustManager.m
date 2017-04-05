@@ -14,26 +14,26 @@
     
     NSString *URLString = [self requestURL:RequestTypeDust];
     NSString *URLServiceString = [self addServiceKey:URLString];
-    
-    NSLog(@"DustManager URLString = %@\n\n",URLServiceString);
-    
     NSURL *url = [self URLStringToURL:URLServiceString parameter:param];
-    
-    NSLog(@"Dust Manager url = %@\n\n",url.absoluteString);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/xml"];
+    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if ( !error ) {
             
             // success
-            NSString *fetchedXML = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
-            NSLog(@"fetchedXML = %@",fetchedXML);
+            NSString *htmltoNSString = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+            
+            NSData *jsonData = [htmltoNSString dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *e;
+            NSDictionary *dustDataDic = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+            
+            [DataSingleTon sharedDataSingleTon].dustData = dustDataDic;
+            UpdateDataBlock();
             
         } else {
             

@@ -1,39 +1,38 @@
 //
-//  WeatherRequest.m
+//  DWRequest.m
 //  Weather
 //
-//  Created by jakouk on 2017. 3. 4..
+//  Created by jakouk on 2017. 4. 7..
 //  Copyright © 2017년 jakouk. All rights reserved.
 //
 
-#import "WeatherRequest.h"
+#import "DWRequest.h"
 
-
-@implementation WeatherRequest
+@implementation DWRequest
 
 // make URL
-+ (NSString *)requestURL:(RequestType)type {
++ (NSString *)requestURL:(DWRequestType)type {
     
     NSMutableString *URLString = [baseURL mutableCopy];
     
     switch (type) {
-        case RequestTypeForecast:
+        case DWRequestTypeForecast:
             [URLString appendFormat:@"/forecast/3days?version=1"];
             break;
-        case RequestTypeCurrent:
+        case DWRequestTypeCurrent:
             [URLString appendFormat:@"/current/minutely?version=1"];
             break;
-        case RequestTypeWeekForecast:
+        case DWRequestTypeWeekForecast:
             [URLString appendString:@"/forecast/6days?version=1"];
             break;
-        case RequestTypeDust:
+        case DWRequestTypeDust:
             URLString = [dustBaseURL mutableCopy];
             [URLString appendString:@"ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?dataTerm=month&pageNo=1&numOfRows=10&ver=1.3&_returnType=json"];
             break;
-        case RequestTypeTM:
+        case DWRequestTypeTM:
             URLString = [WGS84ToTMURL mutableCopy];
             break;
-        case RequestTypeMeasure:
+        case DWRequestTypeMeasure:
             URLString = [dustBaseURL mutableCopy];
             [URLString appendString:@"MsrstnInfoInqireSvc/getNearbyMsrstnList?pageNo=1&numOfRows=10&_returnType=json"];
             break;

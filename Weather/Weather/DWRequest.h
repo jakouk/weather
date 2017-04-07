@@ -1,8 +1,8 @@
 //
-//  WeatherRequest.h
+//  DWRequest.h
 //  Weather
 //
-//  Created by jakouk on 2017. 3. 4..
+//  Created by jakouk on 2017. 4. 7..
 //  Copyright © 2017년 jakouk. All rights reserved.
 //
 
@@ -10,13 +10,13 @@
 #import "AFNetworking.h"
 #import "DataSingleTon.h"
 
-typedef NS_ENUM(NSInteger, RequestType) {
-    RequestTypeForecast,
-    RequestTypeCurrent,
-    RequestTypeWeekForecast,
-    RequestTypeDust,
-    RequestTypeTM,
-    RequestTypeMeasure
+typedef NS_ENUM(NSInteger, DWRequestType) {
+    DWRequestTypeForecast,
+    DWRequestTypeCurrent,
+    DWRequestTypeWeekForecast,
+    DWRequestTypeDust,
+    DWRequestTypeTM,
+    DWRequestTypeMeasure
 };
 
 static NSString *baseURL = @"http://apis.skplanetx.com/weather";
@@ -25,7 +25,9 @@ static NSString *WGS84ToTMURL = @"https://apis.daum.net/local/geo/transcoord?&fr
 
 static NSString *dustBaseURL = @"http://openapi.airkorea.or.kr/openapi/services/rest/";
 
-@interface WeatherRequest : NSObject
+
+
+@interface DWRequest : NSObject
 
 typedef void(^UpdateDataBlock)(void);
 
@@ -38,7 +40,7 @@ typedef void(^UpdateDataBlock)(void);
  @param type RequestType의 Enum값을 입력해.
  
  ***/
-+ (NSString *)requestURL:(RequestType)type;
++ (NSString *)requestURL:(DWRequestType)type;
 
 
 /***
@@ -87,6 +89,5 @@ typedef void(^UpdateDataBlock)(void);
  
  ***/
 + (NSURL *)URLStringToURL:(NSString *)URLString parameter:(NSDictionary *)param;
-
 
 @end

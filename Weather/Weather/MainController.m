@@ -10,9 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MainWeatherView.h"
 #import "LineChart.h"
-#import "WEForecastManager.h"
-#import "WECurrentManager.h"
-#import "WEWeekRequest.h"
+
+
 #import "MainView.h"
 
 @interface MainController ()

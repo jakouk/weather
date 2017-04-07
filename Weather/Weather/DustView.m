@@ -25,13 +25,33 @@
 - (void)drawRect:(CGRect)rect {
     
     NSString *totalDust = self.dustDataDictionary[@"khaiValue"];
-    NSDictionary *gradeDic = [self gradeSeperate:totalDust dustType:@"통합"];
-    NSString *totalGrade = gradeDic[@"dustString"];
-    UIColor *totalColor = gradeDic[@"dustColor"];
+    NSDictionary *totalGradeDic = [self gradeSeperate:totalDust dustType:@"통합"];
+    NSString *totalGrade = totalGradeDic[@"dustString"];
+    UIColor *totalColor = totalGradeDic[@"dustColor"];
     
     [totalDust drawAtPoint:CGPointMake(20, 20) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:totalColor}];
     
     [totalGrade drawAtPoint:CGPointMake(200, 20) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:totalColor}];
+    
+    
+    NSString *pm10Dust = self.dustDataDictionary[@"pm10Value"];
+    NSDictionary *pm10GradeDic = [self gradeSeperate:pm10Dust dustType:@"미세"];
+    NSString *pm10Grade = pm10GradeDic[@"dustString"];
+    UIColor *pm10Color = pm10GradeDic[@"dustColor"];
+    
+    [pm10Dust drawAtPoint:CGPointMake(20, 20 + 70) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:pm10Color}];
+    
+    [pm10Grade drawAtPoint:CGPointMake(200, 20 + 70) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:pm10Color}];
+    
+    
+    NSString *pm25Dust = self.dustDataDictionary[@"pm10Value"];
+    NSDictionary *pm25GradeDic = [self gradeSeperate:pm10Dust dustType:@"초미세"];
+    NSString *pm25Grade = pm25GradeDic[@"dustString"];
+    UIColor *pm25Color = pm25GradeDic[@"dustColor"];
+    
+    [pm25Dust drawAtPoint:CGPointMake(20, 20 + 140) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:pm25Color}];
+    
+    [pm25Grade drawAtPoint:CGPointMake(200, 20 + 140) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:pm25Color}];
     
 }
 

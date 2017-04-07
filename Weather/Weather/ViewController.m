@@ -9,17 +9,15 @@
 #import "ViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBook/AddressBook.h>
-#import "MainWeatherView.h"
+
 #import "LineChart.h"
-#import "WEForecastManager.h"
-#import "WECurrentManager.h"
-#import "WEWeekRequest.h"
 #import "MainView.h"
 #import "DustView.h"
+
+#import "DWWeatherManager.h"
+#import "DWDustManager.h"
+
 #import "WeekForecast.h"
-#import "WETMManager.h"
-#import "WEMeasuringStationManager.h"
-#import "WEDustManager.h"
 
 @interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
@@ -100,12 +98,12 @@
     
     __block ViewController *wself = self;
     
-    [WETMManager requestWeekForcastData:wgs84Data updateDataBlock:^{
+    [DWDustManager requestWGS84ToTM:wgs84Data updateDataBlock:^{
         
         NSDictionary *TMData = [DataSingleTon sharedDataSingleTon].TMData;
         NSDictionary *TMCoordinateData = @{@"tmX":TMData[@"x"],@"tmY":TMData[@"y"]};
         
-        [WEMeasuringStationManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
+        [DWDustManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
            
             NSDictionary *measureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
             NSArray *measureStationArray = measureStaion[@"list"];
@@ -113,7 +111,7 @@
             NSString *measureStationString = measureDictionary[@"stationName"];
             NSDictionary *stationData = @{@"stationName":[measureStationString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
             
-            [WEDustManager requestDustData:stationData updateDataBlock:^{
+            [DWDustManager requestDustData:stationData updateDataBlock:^{
                 
                 [wself dustViewReload];
                 
@@ -125,11 +123,11 @@
         
     }];
     
-    [WECurrentManager requestCurrenttData:data updateDataBlock:^{
+    [DWWeatherManager requestCurrenttData:data updateDataBlock:^{
         
-        [WEForecastManager requestForecastData:data updateDataBlock:^{
+        [DWWeatherManager requestForecastData:data updateDataBlock:^{
             
-            [WEWeekRequest requestWeekForcastData:data updateDataBlock:^{
+            [DWWeatherManager requestWeekForcastData:data updateDataBlock:^{
                 
                 [wself mainViewReload];
                 [wself lineChartViewReload];

@@ -11,7 +11,7 @@
 #import "DataSingleTon.h"
 
 typedef NS_ENUM(NSInteger, DWRequestType) {
-    DWRequestTypeForecast,
+    DWRequestTypeForecast = 1,
     DWRequestTypeCurrent,
     DWRequestTypeWeekForecast,
     DWRequestTypeDust,

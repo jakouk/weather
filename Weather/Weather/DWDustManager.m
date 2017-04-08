@@ -10,17 +10,17 @@
 
 @implementation DWDustManager
 
-
-+ (void)requestWGS84ToTM:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
++ (void)requestWGS84ToTM:(NSString *)latitude longitude:(NSString *)longitude updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
     NSString *URLString = [self requestURL:DWRequestTypeTM];
+    NSDictionary *parameter = @{@"y":latitude,@"x":longitude};
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSString *URLApiString = [self addApiKey:URLString];
     
-    [manager GET:URLApiString parameters:param
+    [manager GET:URLApiString parameters:parameter
         progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -39,12 +39,14 @@
 }
 
 
-+ (void)requestMeasureStationData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
++ (void)requestMeasureStationData:(NSString *)tmX yCoordinate:(NSString *)tmY updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
     NSString *URLString = [self requestURL:DWRequestTypeMeasure];
     NSString *URLServiceString = [self addServiceKey:URLString];
     
-    NSURL *url = [self URLStringToURL:URLServiceString parameter:param];
+    NSDictionary *parameter = @{@"tmX":tmX,@"tmY":tmY};
+    
+    NSURL *url = [self URLStringToURL:URLServiceString parameter:parameter];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
@@ -60,7 +62,7 @@
             
             NSData *jsonData = [htmltoNSString dataUsingEncoding:NSUTF8StringEncoding];
             NSError *e;
-            NSDictionary *mesureStationDic = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+            NSDictionary *mesureStationDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&e];
             
             
             [DataSingleTon sharedDataSingleTon].mesureStation = mesureStationDic;
@@ -80,11 +82,14 @@
 }
 
 
-+ (void)requestDustData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
++ (void)requestDustData:(NSString *)station updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
     NSString *URLString = [self requestURL:DWRequestTypeDust];
     NSString *URLServiceString = [self addServiceKey:URLString];
-    NSURL *url = [self URLStringToURL:URLServiceString parameter:param];
+    
+    NSDictionary *parameter = @{@"stationName":[station stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
+    
+    NSURL *url = [self URLStringToURL:URLServiceString parameter:parameter];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
@@ -100,7 +105,7 @@
             
             NSData *jsonData = [htmltoNSString dataUsingEncoding:NSUTF8StringEncoding];
             NSError *e;
-            NSDictionary *dustDataDic = [NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+            NSDictionary *dustDataDic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&e];
             
             [DataSingleTon sharedDataSingleTon].dustData = dustDataDic;
             UpdateDataBlock();

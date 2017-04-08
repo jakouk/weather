@@ -94,31 +94,24 @@
     
     NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
     
-    NSDictionary *wgs84Data = @{@"y":self.latitude,@"x":self.longitude};
-    
     __block ViewController *wself = self;
     
-    [DWDustManager requestWGS84ToTM:wgs84Data updateDataBlock:^{
-        
+    [DWDustManager requestWGS84ToTM:self.latitude longitude:self.longitude updateDataBlock:^{
+       
         NSDictionary *TMData = [DataSingleTon sharedDataSingleTon].TMData;
-        NSDictionary *TMCoordinateData = @{@"tmX":TMData[@"x"],@"tmY":TMData[@"y"]};
         
-        [DWDustManager requestMeasureStationData:TMCoordinateData updateDataBlock:^{
+        [DWDustManager requestMeasureStationData:TMData[@"x"] yCoordinate:TMData[@"y"] updateDataBlock:^{
            
             NSDictionary *measureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
             NSArray *measureStationArray = measureStaion[@"list"];
             NSDictionary *measureDictionary = measureStationArray[0];
             NSString *measureStationString = measureDictionary[@"stationName"];
-            NSDictionary *stationData = @{@"stationName":[measureStationString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]};
             
-            [DWDustManager requestDustData:stationData updateDataBlock:^{
-                
+            
+            [DWDustManager requestDustData:measureStationString updateDataBlock:^{
                 [wself dustViewReload];
-                
-
             }];
-            
-            
+
         }];
         
     }];

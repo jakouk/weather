@@ -43,7 +43,6 @@
     
     [pm10Grade drawAtPoint:CGPointMake(200, 20 + 70) withAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:80.0],NSForegroundColorAttributeName:pm10Color}];
     
-    
     NSString *pm25Dust = self.dustDataDictionary[@"pm10Value"];
     NSDictionary *pm25GradeDic = [self gradeSeperate:pm10Dust dustType:@"초미세"];
     NSString *pm25Grade = pm25GradeDic[@"dustString"];
@@ -87,7 +86,7 @@
             
         }
         
-    } else {
+    } else if ( [dustType isEqualToString:@"미세"] ) {
         
         if ( gradeInteger <= 30 ) {
             
@@ -100,6 +99,30 @@
             gradeColor = [UIColor greenColor];
             
         } else if ( gradeInteger <= 150 ) {
+            
+            gradeString = @"나쁨";
+            gradeColor = [UIColor orangeColor];
+            
+        } else {
+            
+            gradeString = @"매우 나쁨";
+            gradeColor = [UIColor redColor];
+            
+        }
+        
+    } else {
+        
+        if ( gradeInteger <= 50 ) {
+            
+            gradeString = @"좋음";
+            gradeColor = [UIColor blueColor];
+            
+        } else if ( gradeInteger <= 100 ) {
+            
+            gradeString = @"보통";
+            gradeColor = [UIColor greenColor];
+            
+        } else if ( gradeInteger <= 200 ) {
             
             gradeString = @"나쁨";
             gradeColor = [UIColor orangeColor];

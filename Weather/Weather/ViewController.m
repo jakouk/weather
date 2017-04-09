@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBook/AddressBook.h>
 
+#include "coordinate.h"
+
 #import "LineChart.h"
 #import "MainView.h"
 #import "DustView.h"
@@ -207,7 +209,6 @@
     LineChart * name = [[LineChart alloc] init];
     name.frame = CGRectMake(0, self.scrollView.frame.size.height + 20, self.scrollView.frame.size.width, self.scrollView.frame.size.height/2.5 );
     name.graphPoints = temperatureArray;
-    
     [name performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:0 waitUntilDone:NO];
     [self.scrollView addSubview:name];
 
@@ -295,6 +296,7 @@
     
 }
 
+
 - (void)dustViewReload {
     
     DustView *dustView = [[DustView alloc] init];
@@ -381,6 +383,8 @@
             NSLog(@"Address administrativeArea: %@",placemark.administrativeArea);
             
             [self customViewReload];
+            
+            
             
         }];
         

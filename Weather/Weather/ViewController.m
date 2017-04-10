@@ -10,8 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBook/AddressBook.h>
 
-#include "coordinate.h"
-
 #import "LineChart.h"
 #import "MainView.h"
 #import "DustView.h"
@@ -20,6 +18,8 @@
 #import "DWDustManager.h"
 
 #import "WeekForecast.h"
+#import "AreaCoordinate.h"
+
 
 @interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
@@ -376,6 +376,12 @@
         
         CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
         
+        AreaCoordinate *coordinate = [[AreaCoordinate alloc] init];
+        NSDictionary *naver = [coordinate areaCoordinate:self.latitude longitude:self.longitude];
+        
+        NSLog(@"viewController x = %@",naver[@"x"]);
+        NSLog(@"viewController y = %@",naver[@"y"]);
+        
         [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
            
             CLPlacemark *placemark = placemarks[0];
@@ -384,10 +390,7 @@
             
             [self customViewReload];
             
-            
-            
         }];
-        
         
     }
     

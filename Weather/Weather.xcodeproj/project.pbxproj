@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F25D1E8CF79300F43026 /* GeoTrans.m */; };
-		7306F25F1E8CF79300F43026 /* GeoTrans.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F25D1E8CF79300F43026 /* GeoTrans.m */; };
-		7306F2621E8CF7B700F43026 /* GeoTransPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F2611E8CF7B700F43026 /* GeoTransPoint.m */; };
-		7306F2631E8CF7B700F43026 /* GeoTransPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7306F2611E8CF7B700F43026 /* GeoTransPoint.m */; };
 		7306F2661E8D25DA00F43026 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7306F2651E8D25DA00F43026 /* AddressBookUI.framework */; };
 		7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7313BC831E8E686F00B36B92 /* ViewControllerDataModel.m */; };
 		7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		731A63751E911BCF0013C40B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 731A63741E911BCF0013C40B /* libz.tbd */; };
-		732243B71E9A776600537B0B /* coordinate.c in Sources */ = {isa = PBXBuildFile; fileRef = 732243B51E9A776600537B0B /* coordinate.c */; };
 		733981391E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		7339813A1E6D9D6100484BBD /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733981381E6D9D6100484BBD /* MainView.m */; };
 		734267F01E66D001005E2B06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 734267EF1E66D001005E2B06 /* main.m */; };
@@ -52,6 +47,9 @@
 		73E42AF41E97AC2B00F6ACA9 /* DWDustManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */; };
 		73E42AF51E97AC2B00F6ACA9 /* DWDustManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */; };
 		73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F2AC231E8930B100A6BA8D /* AddressBook.framework */; };
+		73F7C8211E9B59AD005C8D0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F7C8201E9B59AD005C8D0B /* Foundation.framework */; };
+		73F7C8231E9B5B41005C8D0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F7C8221E9B5B41005C8D0B /* UIKit.framework */; };
+		73F7C8261E9B5E70005C8D0B /* AreaCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F7C8251E9B5E70005C8D0B /* AreaCoordinate.m */; };
 		9B14FE754D9A658BABB178F0 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F193AA5FC7F39513FCB375CE /* libPods-Weather.a */; };
 /* End PBXBuildFile section */
 
@@ -66,21 +64,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7306F25C1E8CF79300F43026 /* GeoTrans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTrans.h; sourceTree = "<group>"; };
-		7306F25D1E8CF79300F43026 /* GeoTrans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTrans.m; sourceTree = "<group>"; };
-		7306F2601E8CF7B700F43026 /* GeoTransPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoTransPoint.h; sourceTree = "<group>"; };
-		7306F2611E8CF7B700F43026 /* GeoTransPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoTransPoint.m; sourceTree = "<group>"; };
 		7306F2651E8D25DA00F43026 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7313BC821E8E686F00B36B92 /* ViewControllerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDataModel.h; sourceTree = "<group>"; };
 		7313BC831E8E686F00B36B92 /* ViewControllerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDataModel.m; sourceTree = "<group>"; };
 		7319E8CA1E6A75AB0043912A /* DataSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSingleTon.h; sourceTree = "<group>"; };
 		7319E8CB1E6A75AB0043912A /* DataSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSingleTon.m; sourceTree = "<group>"; };
-		7319E8D31E6A90850043912A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		731A63651E8FAA500013C40B /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		731A63671E8FAAAB0013C40B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		731A63741E911BCF0013C40B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		732243B51E9A776600537B0B /* coordinate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = coordinate.c; sourceTree = "<group>"; };
-		732243B61E9A776600537B0B /* coordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordinate.h; sourceTree = "<group>"; };
 		733981371E6D9D6100484BBD /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		733981381E6D9D6100484BBD /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		734267EB1E66D001005E2B06 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +111,10 @@
 		73E42AF21E97AC2B00F6ACA9 /* DWDustManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDustManager.h; sourceTree = "<group>"; };
 		73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDustManager.m; sourceTree = "<group>"; };
 		73F2AC231E8930B100A6BA8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		73F7C8201E9B59AD005C8D0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		73F7C8221E9B5B41005C8D0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		73F7C8241E9B5E70005C8D0B /* AreaCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaCoordinate.h; sourceTree = "<group>"; };
+		73F7C8251E9B5E70005C8D0B /* AreaCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaCoordinate.m; sourceTree = "<group>"; };
 		99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
 		B4817F700115E0C0CFC52296 /* Pods-WeatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherTests/Pods-WeatherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +128,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F7C8231E9B5B41005C8D0B /* UIKit.framework in Frameworks */,
+				73F7C8211E9B59AD005C8D0B /* Foundation.framework in Frameworks */,
 				731A63751E911BCF0013C40B /* libz.tbd in Frameworks */,
 				7306F2661E8D25DA00F43026 /* AddressBookUI.framework in Frameworks */,
 				73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */,
@@ -157,6 +154,8 @@
 		47D6C732D04F5465AE148ACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73F7C8221E9B5B41005C8D0B /* UIKit.framework */,
+				73F7C8201E9B59AD005C8D0B /* Foundation.framework */,
 				731A63741E911BCF0013C40B /* libz.tbd */,
 				731A63671E8FAAAB0013C40B /* libxml2.tbd */,
 				731A63651E8FAA500013C40B /* libxml2.2.tbd */,
@@ -174,10 +173,8 @@
 		7306F2641E8CF7BE00F43026 /* TM Coordinate */ = {
 			isa = PBXGroup;
 			children = (
-				7306F25C1E8CF79300F43026 /* GeoTrans.h */,
-				7306F25D1E8CF79300F43026 /* GeoTrans.m */,
-				7306F2601E8CF7B700F43026 /* GeoTransPoint.h */,
-				7306F2611E8CF7B700F43026 /* GeoTransPoint.m */,
+				73F7C8241E9B5E70005C8D0B /* AreaCoordinate.h */,
+				73F7C8251E9B5E70005C8D0B /* AreaCoordinate.m */,
 			);
 			name = "TM Coordinate";
 			sourceTree = "<group>";
@@ -257,8 +254,8 @@
 				734267F41E66D001005E2B06 /* ViewController.h */,
 				734267F51E66D001005E2B06 /* ViewController.m */,
 				73DC150C1E811AF80017D47D /* MainController.h */,
-				736061D21E8BA01900923031 /* Incheon.gpx */,
 				73DC150D1E811AF80017D47D /* MainController.m */,
+				736061D21E8BA01900923031 /* Incheon.gpx */,
 				7306F2641E8CF7BE00F43026 /* TM Coordinate */,
 				73F2AC221E89059C00A6BA8D /* DataModel */,
 				7319E8CE1E6A75B00043912A /* DataSingleTon */,
@@ -270,10 +267,7 @@
 				734267FF1E66D001005E2B06 /* LaunchScreen.storyboard */,
 				734268021E66D001005E2B06 /* Info.plist */,
 				734267FA1E66D001005E2B06 /* Weather.xcdatamodeld */,
-				7319E8D31E6A90850043912A /* PrefixHeader.pch */,
 				734267EE1E66D001005E2B06 /* Supporting Files */,
-				732243B51E9A776600537B0B /* coordinate.c */,
-				732243B61E9A776600537B0B /* coordinate.h */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -535,20 +529,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A35A101E76B9570006FDD9 /* WeekForecast.m in Sources */,
-				7306F2621E8CF7B700F43026 /* GeoTransPoint.m in Sources */,
 				734267FC1E66D001005E2B06 /* Weather.xcdatamodeld in Sources */,
-				732243B71E9A776600537B0B /* coordinate.c in Sources */,
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
 				7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */,
 				734267F31E66D001005E2B06 /* AppDelegate.m in Sources */,
 				733981391E6D9D6100484BBD /* MainView.m in Sources */,
-				7306F25E1E8CF79300F43026 /* GeoTrans.m in Sources */,
 				73E42AE81E93830800F6ACA9 /* DustView.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				73E42AF41E97AC2B00F6ACA9 /* DWDustManager.m in Sources */,
 				73E42AEC1E97ABF500F6ACA9 /* DWRequest.m in Sources */,
 				7345DB191E6831880042B51D /* MainWeatherView.m in Sources */,
 				73E42AF01E97AC1700F6ACA9 /* DWWeatherManager.m in Sources */,
+				73F7C8261E9B5E70005C8D0B /* AreaCoordinate.m in Sources */,
 				73DC150E1E811AF80017D47D /* MainController.m in Sources */,
 				7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
@@ -564,8 +556,6 @@
 				73E42AED1E97ABF500F6ACA9 /* DWRequest.m in Sources */,
 				7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */,
 				7345DB1A1E6831880042B51D /* MainWeatherView.m in Sources */,
-				7306F25F1E8CF79300F43026 /* GeoTrans.m in Sources */,
-				7306F2631E8CF7B700F43026 /* GeoTransPoint.m in Sources */,
 				73A35A111E76B9570006FDD9 /* WeekForecast.m in Sources */,
 				7342680C1E66D001005E2B06 /* WeatherTests.m in Sources */,
 				73E42AF51E97AC2B00F6ACA9 /* DWDustManager.m in Sources */,
@@ -645,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -687,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -700,9 +690,10 @@
 			baseConfigurationReference = 99ABCC6D7C3A91540892A6CE /* Pods-Weather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;
@@ -715,9 +706,10 @@
 			baseConfigurationReference = A1FE358210B4FA2376E7E8BE /* Pods-Weather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = NO;
 				DEVELOPMENT_TEAM = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Weather;

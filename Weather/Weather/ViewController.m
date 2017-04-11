@@ -29,6 +29,8 @@
 
 @property (nonatomic) UIRefreshControl *refreshControl;
 
+@property (nonatomic) UIButton *weatherDustButton;
+
 @property NSString *latitude;
 @property NSString *longitude;
 
@@ -44,6 +46,16 @@
     self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height*3);
     
     self.scrollView.delegate = self;
+    
+    self.weatherDustButton = [[UIButton alloc] init];
+    self.weatherDustButton.titleLabel.text = @"먼지";
+    self.weatherDustButton.titleLabel.textColor = [UIColor blueColor];
+    
+    self.weatherDustButton.frame = CGRectMake(self.view.frame.size.width/2 + self.view.frame.size.width/4, 50, 50, 30);
+    
+    [self.weatherDustButton addTarget:self action:@selector(weatherDustButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.scrollView addSubview:self.weatherDustButton];
     
     // Location Manager 생성
     self.locationManager = [[CLLocationManager alloc] init];
@@ -92,18 +104,16 @@
 }
 
 
-- (void)customViewReload {
-    
-    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
+- (void)dustNetworkReload {
     
     __block ViewController *wself = self;
     
     [DWDustManager requestWGS84ToTM:self.latitude longitude:self.longitude updateDataBlock:^{
-       
+        
         NSDictionary *TMData = [DataSingleTon sharedDataSingleTon].TMData;
         
         [DWDustManager requestMeasureStationData:TMData[@"x"] yCoordinate:TMData[@"y"] updateDataBlock:^{
-           
+            
             NSDictionary *measureStaion = [DataSingleTon sharedDataSingleTon].mesureStation;
             NSArray *measureStationArray = measureStaion[@"list"];
             NSDictionary *measureDictionary = measureStationArray[0];
@@ -113,10 +123,19 @@
             [DWDustManager requestDustData:measureStationString updateDataBlock:^{
                 [wself dustViewReload];
             }];
-
+            
         }];
         
     }];
+    
+}
+
+
+- (void)weatherNetworkReload {
+    
+    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
+    
+    __block ViewController *wself = self;
     
     [DWWeatherManager requestCurrenttData:data updateDataBlock:^{
         
@@ -301,7 +320,7 @@
     
     DustView *dustView = [[DustView alloc] init];
     
-    dustView.frame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height/3 *2);
+    dustView.frame = CGRectMake(0, self.view.frame.size.height/2, self.scrollView.frame.size.width, self.scrollView.frame.size.height/3 *2);
     
     NSDictionary *dustDictionary = [DataSingleTon sharedDataSingleTon].dustData;
     NSArray *dustTimeArray = dustDictionary[@"list"];
@@ -379,16 +398,13 @@
         AreaCoordinate *coordinate = [[AreaCoordinate alloc] init];
         NSDictionary *naver = [coordinate areaCoordinate:self.latitude longitude:self.longitude];
         
-        NSLog(@"viewController x = %@",naver[@"x"]);
-        NSLog(@"viewController y = %@",naver[@"y"]);
-        
         [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
            
             CLPlacemark *placemark = placemarks[0];
             NSLog(@"Address locality: %@",placemark.locality);
             NSLog(@"Address administrativeArea: %@",placemark.administrativeArea);
             
-            [self customViewReload];
+            [self weatherNetworkReload];
             
         }];
         
@@ -398,24 +414,101 @@
 
 - (void)refershControlAction{
     
-    for (UIView *subview in [self.scrollView subviews]) {
+    
+    if ( [self.weatherDustButton.titleLabel.text isEqualToString:@"먼지"] ) {
         
-        if ( [subview class] == [MainView class] ) {
-            [subview removeFromSuperview];
+        for (UIView *subview in [self.scrollView subviews]) {
             
-        } else if ( [subview class] == [LineChart class] ) {
-            [subview removeFromSuperview];
-            
-        } else if ( [subview class] == [WeekForecast class] ) {
-            [subview removeFromSuperview];
-            
-        } else if ( [subview class] == [DustView class] ) {
-            [subview removeFromSuperview];
+            if ( [subview class] == [MainView class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [LineChart class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [WeekForecast class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [DustView class] ) {
+                [subview removeFromSuperview];
+            }
         }
+        
+        [self.refreshControl endRefreshing];
+        [self weatherNetworkReload];
+        
+    } else {
+        
+        for (UIView *subview in [self.scrollView subviews]) {
+            
+            if ( [subview class] == [MainView class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [LineChart class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [WeekForecast class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [DustView class] ) {
+                [subview removeFromSuperview];
+            }
+        }
+        
+        [self.refreshControl endRefreshing];
+        [self dustNetworkReload];
+        
     }
     
-    [self.refreshControl endRefreshing];
-    [self customViewReload];
+}
+
+
+- (void)weatherDustButton:(UIButton *)sender {
+    
+    if ( [self.weatherDustButton.titleLabel.text isEqualToString:@"먼지"] ) {
+        
+        for (UIView *subview in [self.scrollView subviews]) {
+            
+            if ( [subview class] == [MainView class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [LineChart class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [WeekForecast class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [DustView class] ) {
+                [subview removeFromSuperview];
+            }
+        }
+    
+        self.weatherDustButton.titleLabel.text = @"날씨";
+        [self dustNetworkReload];
+        
+    } else {
+        
+        for (UIView *subview in [self.scrollView subviews]) {
+            
+            if ( [subview class] == [MainView class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [LineChart class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [WeekForecast class] ) {
+                [subview removeFromSuperview];
+                
+            } else if ( [subview class] == [DustView class] ) {
+                [subview removeFromSuperview];
+            }
+        }
+        
+        self.weatherDustButton.titleLabel.text = @"먼지";
+        [self weatherNetworkReload];
+        
+    }
+    
+    
 }
 
 

@@ -33,6 +33,8 @@
 		73A35A0D1E73967E0006FDD9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A35A0C1E73967E0006FDD9 /* CoreLocation.framework */; };
 		73A35A101E76B9570006FDD9 /* WeekForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A35A0F1E76B9570006FDD9 /* WeekForecast.m */; };
 		73A35A111E76B9570006FDD9 /* WeekForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A35A0F1E76B9570006FDD9 /* WeekForecast.m */; };
+		73C43EB21E9BA847006CA13C /* customNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C43EB11E9BA847006CA13C /* customNavigationView.xib */; };
+		73C43EB51E9CC0BC006CA13C /* customNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C43EB41E9CC0BC006CA13C /* customNavigationView.m */; };
 		73C96980B993FF6085F86DFC /* libPods-WeatherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE641A7C3E2D2B480724A6B6 /* libPods-WeatherTests.a */; };
 		73DC150E1E811AF80017D47D /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DC150D1E811AF80017D47D /* MainController.m */; };
 		73DC150F1E811AF80017D47D /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DC150D1E811AF80017D47D /* MainController.m */; };
@@ -99,6 +101,9 @@
 		73A35A0C1E73967E0006FDD9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		73A35A0E1E76B9570006FDD9 /* WeekForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekForecast.h; sourceTree = "<group>"; };
 		73A35A0F1E76B9570006FDD9 /* WeekForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekForecast.m; sourceTree = "<group>"; };
+		73C43EB11E9BA847006CA13C /* customNavigationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customNavigationView.xib; sourceTree = "<group>"; };
+		73C43EB31E9CC0BC006CA13C /* customNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customNavigationView.h; sourceTree = "<group>"; };
+		73C43EB41E9CC0BC006CA13C /* customNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customNavigationView.m; sourceTree = "<group>"; };
 		73DC150C1E811AF80017D47D /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
 		73DC150D1E811AF80017D47D /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		73DC15101E811B6F0017D47D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -213,6 +218,9 @@
 				7345DADA1E66EAE60042B51D /* MainWeatherView.xib */,
 				7345DB171E6831880042B51D /* MainWeatherView.h */,
 				7345DB181E6831880042B51D /* MainWeatherView.m */,
+				73C43EB11E9BA847006CA13C /* customNavigationView.xib */,
+				73C43EB31E9CC0BC006CA13C /* customNavigationView.h */,
+				73C43EB41E9CC0BC006CA13C /* customNavigationView.m */,
 			);
 			name = MainUI;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 				734268011E66D001005E2B06 /* LaunchScreen.storyboard in Resources */,
 				734267FE1E66D001005E2B06 /* Assets.xcassets in Resources */,
 				734267F91E66D001005E2B06 /* Main.storyboard in Resources */,
+				73C43EB21E9BA847006CA13C /* customNavigationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +542,7 @@
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
 				7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */,
 				734267F31E66D001005E2B06 /* AppDelegate.m in Sources */,
+				73C43EB51E9CC0BC006CA13C /* customNavigationView.m in Sources */,
 				733981391E6D9D6100484BBD /* MainView.m in Sources */,
 				73E42AE81E93830800F6ACA9 /* DustView.m in Sources */,
 				7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */,

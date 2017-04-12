@@ -50,4 +50,12 @@
 + (void)requestWeekForcastData:(NSDictionary *)param updateDataBlock:(UpdateDataBlock)UpdateDataBlock;
 
 
+
+
++ (void)requestWeekForecastDataLongitude:(NSString *)longitude village:(NSString *)village country:(NSString *)country foretxt:(NSString *)foretxt latitude:(NSString *)latitude city:(NSString *)city updateDataBlock:(UpdateDataBlock)UpdateDataBlock;
+
+
+
+
+
 @end

@@ -79,5 +79,52 @@
     return URL;
 }
 
++ (NSDictionary *)SKPlanetAPILogitude:(NSString *)longitude village:(NSString *)village country:(NSString *)country foretxt:(NSString *)foretxt latitude:(NSString *)latitude city:(NSString *)city {
+    
+    NSMutableDictionary *parameter = [[NSMutableDictionary alloc] init];
+    
+    if ( longitude == nil ) {
+        longitude = @"";
+    }
+    
+    if ( village == nil ) {
+        village = @"";
+    }
+    
+    if ( country == nil ) {
+        country = @"";
+    }
+    
+    if ( foretxt == nil ) {
+        foretxt = @"";
+    }
+    
+    if ( latitude == nil ) {
+        latitude = @"";
+    }
+    
+    if ( city == nil ) {
+        city = @"";
+    }
+    
+    NSDictionary *param = @{@"lon":longitude,@"village":village,@"country":country,@"foretxt":foretxt,@"lat":latitude,@"city":city};
+    
+    for ( NSString *key in param ) {
+        
+        if ( param[key] == nil ) {
+            
+            [parameter setObject:key forKey:@""];
+            
+        } else {
+            
+             [parameter setObject:param[key] forKey:key];
+            
+        }
+        
+    }
+    
+    return parameter;
+}
+
 
 @end

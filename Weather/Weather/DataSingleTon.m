@@ -16,10 +16,12 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
+        
         if (data == nil) {
             data = [[DataSingleTon alloc] init];
         }
     });
+    
     return data;
 }
 

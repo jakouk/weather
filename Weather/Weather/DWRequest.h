@@ -90,4 +90,24 @@ typedef void(^UpdateDataBlock)(void);
  ***/
 + (NSURL *)URLStringToURL:(NSString *)URLString parameter:(NSDictionary *)param;
 
+
+/***
+ 
+ SKPlanetAPI의 파라미터에 맞게 자동으로 pram을 변환해 주는 메서드
+ 
+ @author jakoriaty
+ @version 1.00
+ @param longitude 위도
+ @param village 읍, 면, 동
+ @param country 시, 군, 구
+ @param foretxt 단기예보 기상개황 수신여부 , N: 미수신 , Y: 수신
+ @param latitude 경도
+ @param city 시(특별, 광역), 도
+ 
+ 
+ ***/
++ (NSDictionary *)SKPlanetAPILogitude:(NSString *)longitude village:(NSString *)village country:(NSString *)country foretxt:(NSString *)foretxt latitude:(NSString *)latitude city:(NSString *)city;
+
+
+
 @end

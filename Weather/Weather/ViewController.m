@@ -137,17 +137,28 @@
     
     __block ViewController *wself = self;
     
+    
+    
     [DWWeatherManager requestCurrenttData:data updateDataBlock:^{
         
         [DWWeatherManager requestForecastData:data updateDataBlock:^{
             
-            [DWWeatherManager requestWeekForcastData:data updateDataBlock:^{
+        
+            
+           // [DWWeatherManager requestWeekForcastData:data updateDataBlock:^{
+                
+                
+            [DWWeatherManager requestWeekForecastDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
                 
                 [wself mainViewReload];
                 [wself lineChartViewReload];
                 [wself weekDataReload];
                 
             }];
+                
+               
+                
+            //}];
         }];
     }];
 }
@@ -277,7 +288,9 @@
         [dayAmWeather setString:@""];
         [dayPmWeather setString:@""];
         
+        
     }
+    
     
     NSMutableArray *tmaxArray = [[NSMutableArray alloc] init];
     NSMutableArray *tminArray = [[NSMutableArray alloc] init];

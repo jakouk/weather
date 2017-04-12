@@ -90,4 +90,36 @@
     
     
 }
+
++ (void)requestWeekForecastDataLongitude:(NSString *)longitude village:(NSString *)village country:(NSString *)country foretxt:(NSString *)foretxt latitude:(NSString *)latitude city:(NSString *)city updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
+    
+    NSString *URLString = [self requestURL:DWRequestTypeWeekForecast];
+    
+    NSDictionary *parameter =  [self SKPlanetAPILogitude:longitude village:village country:country foretxt:foretxt latitude:latitude city:city];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self addAppkey:manager];
+    
+    [manager GET:URLString parameters:parameter
+        progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            [DataSingleTon sharedDataSingleTon].weekForcastData = responseObject;
+            UpdateDataBlock();
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            NSLog(@"6일 예보 실패");
+            
+        }];
+    
+    
+    
+}
+
+
+
 @end

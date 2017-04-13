@@ -28,7 +28,6 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (nonatomic) UIRefreshControl *refreshControl;
-
 @property (nonatomic) UIButton *weatherDustButton;
 
 @property NSString *latitude;
@@ -92,6 +91,7 @@
 
 
 // scroll background alpha
+#pragma mark scrollDelegate alpha
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
     if ( scrollView.contentOffset. y < 400 ) {
@@ -103,7 +103,7 @@
     }
 }
 
-
+#pragma mark dustNetwork
 - (void)dustNetworkReload {
     
     __block ViewController *wself = self;
@@ -130,24 +130,17 @@
     
 }
 
-
+#pragma mark weatherNetwrok
 - (void)weatherNetworkReload {
     
     NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
     
     __block ViewController *wself = self;
-    
-    
-    
-    [DWWeatherManager requestCurrenttData:data updateDataBlock:^{
+        
+    [DWWeatherManager requestCurrentDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
         
         [DWWeatherManager requestForecastData:data updateDataBlock:^{
             
-        
-            
-           // [DWWeatherManager requestWeekForcastData:data updateDataBlock:^{
-                
-                
             [DWWeatherManager requestWeekForecastDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
                 
                 [wself mainViewReload];
@@ -155,15 +148,11 @@
                 [wself weekDataReload];
                 
             }];
-                
-               
-                
-            //}];
         }];
     }];
 }
 
-
+#pragma mark weatherView
 - (void)mainViewReload {
     
     MainView *mainView = [[MainView alloc] init];
@@ -288,7 +277,6 @@
         [dayAmWeather setString:@""];
         [dayPmWeather setString:@""];
         
-        
     }
     
     
@@ -328,7 +316,7 @@
     
 }
 
-
+#pragma mark dustView
 - (void)dustViewReload {
     
     DustView *dustView = [[DustView alloc] init];
@@ -390,6 +378,7 @@
     
 }
 
+#pragma mark current location
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
     if ( self.latitude != [[NSString alloc] initWithFormat:@"%lf",manager.location.coordinate.latitude]) {
@@ -425,8 +414,8 @@
     
 }
 
+#pragma mark refreshControl
 - (void)refershControlAction{
-    
     
     if ( [self.weatherDustButton.titleLabel.text isEqualToString:@"먼지"] ) {
         
@@ -474,7 +463,7 @@
     
 }
 
-
+#pragma weatehrDustButton
 - (void)weatherDustButton:(UIButton *)sender {
     
     if ( [self.weatherDustButton.titleLabel.text isEqualToString:@"먼지"] ) {

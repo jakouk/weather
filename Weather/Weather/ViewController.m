@@ -133,13 +133,13 @@
 #pragma mark weatherNetwrok
 - (void)weatherNetworkReload {
     
-    NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
+    //NSDictionary *data = @{@"lon":self.longitude,@"village":@"",@"country":@"",@"foretxt":@"",@"lat":self.latitude,@"city":@""};
     
     __block ViewController *wself = self;
-        
+    
     [DWWeatherManager requestCurrentDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
         
-        [DWWeatherManager requestForecastData:data updateDataBlock:^{
+        [DWWeatherManager requestTwoDayForecastDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
             
             [DWWeatherManager requestWeekForecastDataLongitude:self.longitude village:nil country:nil foretxt:nil latitude:self.latitude city:nil updateDataBlock:^{
                 
@@ -148,7 +148,9 @@
                 [wself weekDataReload];
                 
             }];
+            
         }];
+        
     }];
 }
 

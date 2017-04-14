@@ -95,6 +95,29 @@
 + (void)requestTwoDayForecastDataLongitude:(NSString *)longitude village:(NSString *)village country:(NSString *)country foretxt:(NSString *)foretxt latitude:(NSString *)latitude city:(NSString *)city updateDataBlock:(UpdateDataBlock)UpdateDataBlock {
     
     
+    NSString *URLString = [self requestURL:DWRequestTypeForecast];
+    
+    NSDictionary *parameter =  [self SKPlanetAPILogitude:longitude village:village country:country foretxt:foretxt latitude:latitude city:city];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self addAppkey:manager];
+    
+    [manager GET:URLString parameters:parameter
+        progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            [DataSingleTon sharedDataSingleTon].forecastData = responseObject;
+            NSLog(@"TwoDay responseObject = %@",responseObject);
+            UpdateDataBlock();
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            NSLog(@"현재 온도 네트워크 연결 실패");
+            
+        }];
     
     
 }
@@ -118,6 +141,7 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [DataSingleTon sharedDataSingleTon].currentData = responseObject;
+            NSLog(@"CurrentData responseObject = %@",responseObject);
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -147,6 +171,8 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [DataSingleTon sharedDataSingleTon].weekForcastData = responseObject;
+            NSLog(@"WeekForecast responseObject = %@",responseObject);
+            
             UpdateDataBlock();
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

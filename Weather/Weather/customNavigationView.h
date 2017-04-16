@@ -10,9 +10,10 @@
 
 @interface customNavigationView : UIView
 
-@property UIButton *plusButton;
-@property UILabel *timeLabel;
-@property UILabel *locationLabel;
-@property UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet UIButton *sideBarMenu;
+@property (weak, nonatomic) IBOutlet UIButton *regionAdd;
+
+@property (weak, nonatomic) IBOutlet UILabel *regionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

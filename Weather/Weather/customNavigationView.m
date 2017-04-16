@@ -21,6 +21,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     self = [super initWithCoder:aDecoder];
+    
     if (self) {
         UIView *xibView = [[[NSBundle mainBundle] loadNibNamed:@"customNavigationView"
                                                          owner:self

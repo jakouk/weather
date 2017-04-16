@@ -58,7 +58,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="alphaView" destination="vXP-kt-hty" id="axH-Sz-4eQ"/>
                         <outlet property="scrollView" destination="vXP-kt-hty" id="YUr-a5-KH7"/>
                     </connections>
                 </viewController>
@@ -78,48 +77,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="londonbk" translatesAutoresizingMaskIntoConstraints="NO" id="9Xm-4M-Mho">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-Ef-A7V">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j06-cJ-ZZd" customClass="customNavigationView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="kM8-Ku-IDe"/>
-                                        </constraints>
-                                    </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8b-gl-v7x">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="603"/>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abx-cn-V6L" customClass="customNavigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="H8b-gl-v7x" firstAttribute="leading" secondItem="DEg-Ef-A7V" secondAttribute="leading" id="CrB-dC-mwr"/>
-                                    <constraint firstItem="H8b-gl-v7x" firstAttribute="top" secondItem="j06-cJ-ZZd" secondAttribute="bottom" id="DNP-VN-9Xc"/>
-                                    <constraint firstAttribute="trailing" secondItem="j06-cJ-ZZd" secondAttribute="trailing" id="Ojt-AU-IeC"/>
-                                    <constraint firstItem="H8b-gl-v7x" firstAttribute="top" secondItem="j06-cJ-ZZd" secondAttribute="bottom" id="TBB-v2-GO1"/>
-                                    <constraint firstItem="j06-cJ-ZZd" firstAttribute="top" secondItem="DEg-Ef-A7V" secondAttribute="top" id="gEj-tk-eep"/>
-                                    <constraint firstAttribute="bottom" secondItem="H8b-gl-v7x" secondAttribute="bottom" id="h8b-UL-5Ks"/>
-                                    <constraint firstAttribute="trailing" secondItem="H8b-gl-v7x" secondAttribute="trailing" id="mjG-3l-Dzx"/>
-                                    <constraint firstItem="j06-cJ-ZZd" firstAttribute="leading" secondItem="DEg-Ef-A7V" secondAttribute="leading" id="pm8-Nu-aoR"/>
+                                    <constraint firstAttribute="height" constant="44" id="5QU-AA-cCE"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DEg-Ef-A7V" firstAttribute="leading" secondItem="gw1-fp-z3C" secondAttribute="leading" id="B8d-0o-U6D"/>
-                            <constraint firstItem="Rlb-xd-6hj" firstAttribute="top" secondItem="DEg-Ef-A7V" secondAttribute="bottom" id="FoV-ib-eeO"/>
-                            <constraint firstItem="Rlb-xd-6hj" firstAttribute="top" secondItem="9Xm-4M-Mho" secondAttribute="bottom" id="XGm-F0-FDE"/>
-                            <constraint firstItem="9Xm-4M-Mho" firstAttribute="leading" secondItem="gw1-fp-z3C" secondAttribute="leading" id="XeW-3N-qeM"/>
-                            <constraint firstItem="DEg-Ef-A7V" firstAttribute="top" secondItem="L3e-C7-dgJ" secondAttribute="bottom" id="YNQ-5L-7Jl"/>
-                            <constraint firstItem="9Xm-4M-Mho" firstAttribute="top" secondItem="gw1-fp-z3C" secondAttribute="top" id="c6s-p7-UZt"/>
-                            <constraint firstAttribute="trailing" secondItem="9Xm-4M-Mho" secondAttribute="trailing" id="j34-SJ-KdV"/>
-                            <constraint firstAttribute="trailing" secondItem="DEg-Ef-A7V" secondAttribute="trailing" id="mV4-4I-dc2"/>
+                            <constraint firstAttribute="trailing" secondItem="Abx-cn-V6L" secondAttribute="trailing" id="1Ad-UZ-kC0"/>
+                            <constraint firstItem="Abx-cn-V6L" firstAttribute="top" secondItem="gw1-fp-z3C" secondAttribute="top" id="Je4-Zn-bFr"/>
+                            <constraint firstItem="Abx-cn-V6L" firstAttribute="leading" secondItem="gw1-fp-z3C" secondAttribute="leading" id="K70-G4-sFw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="view" destination="Abx-cn-V6L" id="amL-hW-IYl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dH-fB-gwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

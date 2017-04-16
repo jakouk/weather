@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="customNavigationView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -42,6 +42,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="regionAdd" destination="StA-rY-oOV" id="jPW-ec-mUg"/>
+                <outlet property="regionLabel" destination="11L-uZ-5Dh" id="YBp-dH-CMH"/>
+                <outlet property="sideBarMenu" destination="5oB-bg-jRa" id="mWy-6f-yga"/>
+                <outlet property="timeLabel" destination="PPc-VM-gIB" id="9gC-Sf-5Gt"/>
+            </connections>
             <point key="canvasLocation" x="-139.5" y="181"/>
         </view>
     </objects>

@@ -81,6 +81,7 @@
     [self.refreshControl addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
     [self.scrollView addSubview:self.refreshControl];
     
+    
 }
 
 
@@ -182,6 +183,11 @@
     [mainView setNeedsDisplay];
     
     [self.scrollView addSubview:mainView];
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [mainView addGestureRecognizer:singleFingerTap];
     
 }
 
@@ -415,6 +421,29 @@
     }
     
 }
+
+#pragma mark TapGesture 
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    
+    
+    터치도 되고 화면도 움직이는데 위로는 올라가는데 아래로는 내려오지 않음.
+    
+    if ( self.scrollView.contentOffset.y > self.view.frame.size.height ) {
+        
+        self.scrollView.contentOffset = CGPointMake(0, self.view.frame.size.height - self.view.frame.size.height/3);
+        
+        NSLog(@"hello1");
+        
+    } else {
+        
+        self.scrollView.contentOffset = CGPointMake(0, 0);
+        
+        
+        NSLog(@"hello2");
+    }
+}
+
 
 #pragma mark refreshControl
 - (void)refershControlAction{

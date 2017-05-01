@@ -20,6 +20,9 @@
 #import "WeekForecast.h"
 #import "AreaCoordinate.h"
 
+#import "WeatherModel.h"
+#import "DustModel.h"
+
 
 @interface ViewController () <UIScrollViewDelegate, CLLocationManagerDelegate>
 
@@ -33,11 +36,15 @@
 @property NSString *latitude;
 @property NSString *longitude;
 
+@property ( nonatomic ) WeatherModel *weatherModel;
+@property ( nonatomic ) DustModel *dustModel;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -82,19 +89,51 @@
     [self.scrollView addSubview:self.refreshControl];
     
     
+   
 }
 
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+}
+
+
+#pragma mark - registerAsObserver
+- (void)registerAsObserver {
+    
+    // KVO
+    [self.weatherModel addObserver:self forKeyPath:@"weatherModel" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    [self.dustModel addObserver:self forKeyPath:@"dustModel" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+}
+
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    
+    if ( [keyPath isEqualToString:@"weatherModel"] ) {
+        
+        NSLog(@"weatherModel Change");
+        
+    } else if ( [keyPath isEqualToString:@"dustModel"] ) {
+        
+        NSLog(@"dustModel Change");
+        
+    }
+    
 }
 
 
 // scroll background alpha
 #pragma mark scrollDelegate alpha
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
+    
+    
     if ( scrollView.contentOffset. y < 400 ) {
         
         CGFloat alpha = 0;
@@ -427,7 +466,7 @@
 {
     
     
-    터치도 되고 화면도 움직이는데 위로는 올라가는데 아래로는 내려오지 않음.
+    // 터치도 되고 화면도 움직이는데 위로는 올라가는데 아래로는 내려오지 않음.
     
     if ( self.scrollView.contentOffset.y > self.view.frame.size.height ) {
         

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7306F2661E8D25DA00F43026 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7306F2651E8D25DA00F43026 /* AddressBookUI.framework */; };
-		7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7313BC831E8E686F00B36B92 /* ViewControllerDataModel.m */; };
 		7319E8CC1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		7319E8CD1E6A75AB0043912A /* DataSingleTon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319E8CB1E6A75AB0043912A /* DataSingleTon.m */; };
 		731A63751E911BCF0013C40B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 731A63741E911BCF0013C40B /* libz.tbd */; };
@@ -48,6 +47,8 @@
 		73E42AF11E97AC1700F6ACA9 /* DWWeatherManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AEF1E97AC1700F6ACA9 /* DWWeatherManager.m */; };
 		73E42AF41E97AC2B00F6ACA9 /* DWDustManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */; };
 		73E42AF51E97AC2B00F6ACA9 /* DWDustManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */; };
+		73E50D6C1EB72CC80038398A /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E50D6B1EB72CC80038398A /* WeatherModel.m */; };
+		73E50D6F1EB72CD90038398A /* DustModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E50D6E1EB72CD90038398A /* DustModel.m */; };
 		73F2AC241E8930B100A6BA8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F2AC231E8930B100A6BA8D /* AddressBook.framework */; };
 		73F7C8211E9B59AD005C8D0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F7C8201E9B59AD005C8D0B /* Foundation.framework */; };
 		73F7C8231E9B5B41005C8D0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F7C8221E9B5B41005C8D0B /* UIKit.framework */; };
@@ -67,8 +68,6 @@
 
 /* Begin PBXFileReference section */
 		7306F2651E8D25DA00F43026 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		7313BC821E8E686F00B36B92 /* ViewControllerDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDataModel.h; sourceTree = "<group>"; };
-		7313BC831E8E686F00B36B92 /* ViewControllerDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDataModel.m; sourceTree = "<group>"; };
 		7319E8CA1E6A75AB0043912A /* DataSingleTon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSingleTon.h; sourceTree = "<group>"; };
 		7319E8CB1E6A75AB0043912A /* DataSingleTon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSingleTon.m; sourceTree = "<group>"; };
 		731A63651E8FAA500013C40B /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -115,6 +114,10 @@
 		73E42AEF1E97AC1700F6ACA9 /* DWWeatherManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWeatherManager.m; sourceTree = "<group>"; };
 		73E42AF21E97AC2B00F6ACA9 /* DWDustManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDustManager.h; sourceTree = "<group>"; };
 		73E42AF31E97AC2B00F6ACA9 /* DWDustManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDustManager.m; sourceTree = "<group>"; };
+		73E50D6A1EB72CC80038398A /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
+		73E50D6B1EB72CC80038398A /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		73E50D6D1EB72CD90038398A /* DustModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DustModel.h; sourceTree = "<group>"; };
+		73E50D6E1EB72CD90038398A /* DustModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DustModel.m; sourceTree = "<group>"; };
 		73F2AC231E8930B100A6BA8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		73F7C8201E9B59AD005C8D0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73F7C8221E9B5B41005C8D0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -309,8 +312,10 @@
 		73F2AC221E89059C00A6BA8D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				7313BC821E8E686F00B36B92 /* ViewControllerDataModel.h */,
-				7313BC831E8E686F00B36B92 /* ViewControllerDataModel.m */,
+				73E50D6A1EB72CC80038398A /* WeatherModel.h */,
+				73E50D6B1EB72CC80038398A /* WeatherModel.m */,
+				73E50D6D1EB72CD90038398A /* DustModel.h */,
+				73E50D6E1EB72CD90038398A /* DustModel.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -537,8 +542,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E50D6C1EB72CC80038398A /* WeatherModel.m in Sources */,
 				73A35A101E76B9570006FDD9 /* WeekForecast.m in Sources */,
 				734267FC1E66D001005E2B06 /* Weather.xcdatamodeld in Sources */,
+				73E50D6F1EB72CD90038398A /* DustModel.m in Sources */,
 				734267F61E66D001005E2B06 /* ViewController.m in Sources */,
 				7345DAE31E66FEAC0042B51D /* LineChart.m in Sources */,
 				734267F31E66D001005E2B06 /* AppDelegate.m in Sources */,
@@ -552,7 +559,6 @@
 				73E42AF01E97AC1700F6ACA9 /* DWWeatherManager.m in Sources */,
 				73F7C8261E9B5E70005C8D0B /* AreaCoordinate.m in Sources */,
 				73DC150E1E811AF80017D47D /* MainController.m in Sources */,
-				7313BC841E8E686F00B36B92 /* ViewControllerDataModel.m in Sources */,
 				734267F01E66D001005E2B06 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

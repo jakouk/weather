@@ -54,8 +54,10 @@
     self.scrollView.delegate = self;
     
     self.weatherDustButton = [[UIButton alloc] init];
-    self.weatherDustButton.titleLabel.text = @"먼지";
-    self.weatherDustButton.titleLabel.textColor = [UIColor blueColor];
+    self.weatherDustButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.weatherDustButton setTintColor:[UIColor whiteColor]];
+    [self.weatherDustButton setTitle:@"먼지" forState:UIControlStateNormal];
+    [self.weatherDustButton setTitle:@"날씨" forState:UIControlStateSelected];
     
     self.weatherDustButton.frame = CGRectMake(self.view.frame.size.width/2 + self.view.frame.size.width/4, 50, 50, 30);
     
@@ -536,7 +538,8 @@
 #pragma weatehrDustButton
 - (void)weatherDustButton:(UIButton *)sender {
     
-    if ( [self.weatherDustButton.titleLabel.text isEqualToString:@"먼지"] ) {
+    
+    if  ( !sender.selected ) {
         
         for (UIView *subview in [self.scrollView subviews]) {
             
@@ -553,8 +556,8 @@
                 [subview removeFromSuperview];
             }
         }
-    
-        self.weatherDustButton.titleLabel.text = @"날씨";
+        
+        sender.selected = YES;
         [self dustNetworkReload];
         
     } else {
@@ -575,11 +578,10 @@
             }
         }
         
-        self.weatherDustButton.titleLabel.text = @"먼지";
+        sender.selected = NO;
         [self weatherNetworkReload];
         
     }
-    
     
 }
 
